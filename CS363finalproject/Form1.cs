@@ -21,6 +21,7 @@ namespace CS363finalproject
         int tx, ty, lim = 20;
 
         Bitmap bmp;
+
         Pen p;
         Graphics g;
 
