@@ -97,6 +97,12 @@ namespace CS363finalproject
             g.DrawLine(p, new Point(cx, cy), new Point(x, y));
             #endregion
 
+
+            g.DrawLine(p, new Point(120, 130), new Point(180, 130));
+            g.DrawLine(p, new Point(120, 132), new Point(180, 132));
+            g.DrawLine(p, new Point(120, 140), new Point(180, 140));
+            g.DrawLine(p, new Point(120, 142), new Point(180, 142));
+
             //load bitmap in picture
             pictureBox2.Image = bmp;
             //dispose
@@ -109,10 +115,6 @@ namespace CS363finalproject
             {
                 u = 0;
             }
-
-        }
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
 
         }
     }
