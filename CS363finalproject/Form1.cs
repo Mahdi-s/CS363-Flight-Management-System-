@@ -20,7 +20,7 @@ namespace CS363finalproject
 
         int tx, ty, lim = 20;
 
-
+        Boolean warning = false;
 
         Bitmap bmp;
 
@@ -32,7 +32,7 @@ namespace CS363finalproject
             InitializeComponent();
             topographicChecked.Checked = true;
             topographicChecked.Checked = false;
-            pictureBox3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -53,7 +53,14 @@ namespace CS363finalproject
         private void t_Tick(object sender, EventArgs e)
         {
             //pen
-            p = new Pen(Color.Green, 1f);
+            if (warning)
+            {
+                p = new Pen(Color.Red, 1f);
+            }
+            else
+            {
+                p = new Pen(Color.Green, 1f);
+            }
             //graphics 
             g = Graphics.FromImage(bmp);
             //calculate x,y, coord of hand
