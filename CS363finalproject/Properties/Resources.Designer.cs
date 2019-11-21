@@ -63,9 +63,19 @@ namespace CS363finalproject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap airplane_nbg {
+        internal static System.Drawing.Bitmap airplaneGreen {
             get {
-                object obj = ResourceManager.GetObject("airplane-nbg", resourceCulture);
+                object obj = ResourceManager.GetObject("airplaneGreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap airplaneWhite {
+            get {
+                object obj = ResourceManager.GetObject("airplaneWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -107,11 +107,15 @@ namespace CS363finalproject
             g.DrawLine(p, new Point(cx, cy), new Point(x, y));
             #endregion
 
-
+            //runway lines
             g.DrawLine(p, new Point(120, 130), new Point(180, 130));
             g.DrawLine(p, new Point(120, 132), new Point(180, 132));
             g.DrawLine(p, new Point(120, 140), new Point(180, 140));
             g.DrawLine(p, new Point(120, 142), new Point(180, 142));
+
+            //airspace entrance lines
+            g.DrawLine(p, new Point(250, 40), new Point(260, 40));
+            g.DrawLine(p, new Point(30, 250), new Point(40, 250));
 
             //load bitmap in picture
             pictureBox2.Image = bmp;
@@ -128,14 +132,38 @@ namespace CS363finalproject
 
         }
 
+        Boolean flippedA1C1 = false;
+        Boolean flippedA2C1 = false;
+        Boolean flippedA3C1 = false;
         private void Case1Button_Click(object sender, EventArgs e)
         {
             Timer t_case1 = new Timer();
             t_case1.Interval = 50; //millisecond
             t_case1.Tick += new EventHandler(this.case1_Tick);
             t_case1.Start();
+
+            airplane1.Location = new Point(330, 275);
+            airplane1.Visible = true;
+            if (flippedA1C1)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA1C1 = false;
+            }
+
+            airplane2.Location = new Point(220, 15);
+            airplane2.Visible = true;
+            if(flippedA2C1)
+            {
+                flippedA2C1 = false;
+            }
+
+            airplane3.Location = new Point(110,210);
+            airplane3.Visible = true;
+            if (flippedA3C1)
+            {
+                flippedA3C1 = false;
+            }
         }
-        Boolean flippedA1C1 = false;
         private void case1_Tick(object sender, EventArgs e)
         {
             if(airplane1.Location.Y == 150 && !flippedA1C1)

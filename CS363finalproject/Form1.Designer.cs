@@ -58,7 +58,7 @@
             // 
             this.case1Button.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.case1Button.Location = new System.Drawing.Point(475, 323);
-            this.case1Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.case1Button.Margin = new System.Windows.Forms.Padding(2);
             this.case1Button.Name = "case1Button";
             this.case1Button.Size = new System.Drawing.Size(56, 19);
             this.case1Button.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             this.case2Button.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.case2Button.Location = new System.Drawing.Point(534, 322);
-            this.case2Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.case2Button.Margin = new System.Windows.Forms.Padding(2);
             this.case2Button.Name = "case2Button";
             this.case2Button.Size = new System.Drawing.Size(56, 19);
             this.case2Button.TabIndex = 3;
@@ -82,7 +82,7 @@
             // 
             this.case3Button.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.case3Button.Location = new System.Drawing.Point(475, 343);
-            this.case3Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.case3Button.Margin = new System.Windows.Forms.Padding(2);
             this.case3Button.Name = "case3Button";
             this.case3Button.Size = new System.Drawing.Size(56, 19);
             this.case3Button.TabIndex = 4;
@@ -94,7 +94,7 @@
             // 
             this.case4Button.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.case4Button.Location = new System.Drawing.Point(534, 343);
-            this.case4Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.case4Button.Margin = new System.Windows.Forms.Padding(2);
             this.case4Button.Name = "case4Button";
             this.case4Button.Size = new System.Drawing.Size(56, 19);
             this.case4Button.TabIndex = 5;
@@ -108,7 +108,7 @@
             this.topographicChecked.BackColor = System.Drawing.Color.Black;
             this.topographicChecked.ForeColor = System.Drawing.Color.White;
             this.topographicChecked.Location = new System.Drawing.Point(490, 71);
-            this.topographicChecked.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.topographicChecked.Margin = new System.Windows.Forms.Padding(2);
             this.topographicChecked.Name = "topographicChecked";
             this.topographicChecked.Size = new System.Drawing.Size(86, 17);
             this.topographicChecked.TabIndex = 7;
@@ -245,8 +245,8 @@
             // 
             this.airplane1.BackColor = System.Drawing.Color.Transparent;
             this.airplane1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.airplane1.Image = global::CS363finalproject.Properties.Resources.airplane_nbg;
-            this.airplane1.Location = new System.Drawing.Point(331, 276);
+            this.airplane1.Image = global::CS363finalproject.Properties.Resources.airplaneWhite;
+            this.airplane1.Location = new System.Drawing.Point(330, 275);
             this.airplane1.Name = "airplane1";
             this.airplane1.Size = new System.Drawing.Size(35, 30);
             this.airplane1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -258,7 +258,7 @@
             this.pictureBox2.BackgroundImage = global::CS363finalproject.Properties.Resources.black;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(462, 366);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -269,8 +269,8 @@
             // 
             this.airplane2.BackColor = System.Drawing.Color.Transparent;
             this.airplane2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.airplane2.Image = global::CS363finalproject.Properties.Resources.airplane_nbg;
-            this.airplane2.Location = new System.Drawing.Point(217, 15);
+            this.airplane2.Image = global::CS363finalproject.Properties.Resources.airplaneGreen;
+            this.airplane2.Location = new System.Drawing.Point(220, 15);
             this.airplane2.Name = "airplane2";
             this.airplane2.Size = new System.Drawing.Size(35, 30);
             this.airplane2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -281,8 +281,8 @@
             // 
             this.airplane3.BackColor = System.Drawing.Color.Transparent;
             this.airplane3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.airplane3.Image = global::CS363finalproject.Properties.Resources.airplane_nbg;
-            this.airplane3.Location = new System.Drawing.Point(113, 311);
+            this.airplane3.Image = global::CS363finalproject.Properties.Resources.airplaneGreen;
+            this.airplane3.Location = new System.Drawing.Point(110, 210);
             this.airplane3.Name = "airplane3";
             this.airplane3.Size = new System.Drawing.Size(35, 30);
             this.airplane3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -314,7 +314,7 @@
             this.Controls.Add(this.case3Button);
             this.Controls.Add(this.case2Button);
             this.Controls.Add(this.pictureBox2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RADAR";
