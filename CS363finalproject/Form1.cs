@@ -28,6 +28,8 @@ namespace CS363finalproject
         public Form1()
         {
             InitializeComponent();
+            topographicChecked.Checked = true;
+            topographicChecked.Checked = false;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -116,6 +118,18 @@ namespace CS363finalproject
                 u = 0;
             }
 
+        }
+
+        private void TopographicChecked_CheckedChanged(object sender, EventArgs e)
+        {
+            if (topographicChecked.Checked)
+            {
+                pictureBox2.BackgroundImage = Properties.Resources.topomap;
+            }
+            else
+            {
+                pictureBox2.BackgroundImage = Properties.Resources.airplane_nbg;
+            }
         }
     }
 }
