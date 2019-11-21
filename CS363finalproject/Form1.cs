@@ -32,6 +32,7 @@ namespace CS363finalproject
             InitializeComponent();
             topographicChecked.Checked = true;
             topographicChecked.Checked = false;
+            pictureBox3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -119,6 +120,26 @@ namespace CS363finalproject
             {
                 u = 0;
             }
+
+        }
+
+        private void Case1Button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Case2Button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Case3Button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Case4Button_Click(object sender, EventArgs e)
+        {
 
         }
 
