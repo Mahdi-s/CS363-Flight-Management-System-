@@ -12,20 +12,17 @@ namespace CS363finalproject
 {
     public partial class Form1 : Form
     {
-        Timer t = new Timer();
         int WIDTH = 300, HEIGHT = 300, HAND = 150;
         int u; //in degree
         int cx, cy; //center of circle
         int x, y; //Hand coordinate
-
         int tx, ty, lim = 20;
 
-        Boolean warning = false;
-
         Bitmap bmp;
-
         Pen p;
         Graphics g;
+
+        Boolean warning = false;
 
         public Form1()
         {
@@ -45,6 +42,7 @@ namespace CS363finalproject
             cy = HEIGHT / 2;
 
             //timer
+            Timer t = new Timer();
             t.Interval = 5;// in millisec
             t.Tick += new EventHandler(this.t_Tick);
             t.Start();
