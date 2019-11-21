@@ -20,6 +20,11 @@ namespace CS363finalproject
 
         int tx, ty, lim = 20;
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         Bitmap bmp;
 
         Pen p;
