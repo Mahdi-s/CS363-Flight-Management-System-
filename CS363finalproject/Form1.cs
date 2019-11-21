@@ -125,9 +125,12 @@ namespace CS363finalproject
 
         private void Case1Button_Click(object sender, EventArgs e)
         {
-
+            Timer t_case1 = new Timer();
         }
-
+        private void case1_Tick(object sender, EventArgs e)
+        {
+            
+        }
         private void Case2Button_Click(object sender, EventArgs e)
         {
 
