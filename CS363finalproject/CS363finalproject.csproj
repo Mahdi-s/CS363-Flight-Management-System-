@@ -83,5 +83,8 @@
   <ItemGroup>
     <None Include="Resources\airplane-nbg1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\topomap.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
