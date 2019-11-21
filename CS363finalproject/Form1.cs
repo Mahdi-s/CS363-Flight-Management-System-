@@ -133,10 +133,31 @@ namespace CS363finalproject
         private void Case1Button_Click(object sender, EventArgs e)
         {
             Timer t_case1 = new Timer();
+            t_case1.Interval = 50; //millisecond
+            t_case1.Tick += new EventHandler(this.case1_Tick);
+            t_case1.Start();
         }
+        Boolean flippedA1C1 = false;
         private void case1_Tick(object sender, EventArgs e)
         {
-            
+            if(airplane1.Location.Y == 150 && !flippedA1C1)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA1C1 = true;
+                airplane1.Left -= 1;
+            }
+            else if (airplane1.Location.Y > 150)
+            {
+                airplane1.Top -= 1;
+            }
+            else
+            {
+                airplane1.Left -= 1;
+                if (airplane1.Location.X == 225)
+                {
+                    airplane1.Visible = false;
+                }
+            }
         }
         private void Case2Button_Click(object sender, EventArgs e)
         {
