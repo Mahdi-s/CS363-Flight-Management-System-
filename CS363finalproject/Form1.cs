@@ -20,10 +20,7 @@ namespace CS363finalproject
 
         int tx, ty, lim = 20;
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
 
-        }
 
         Bitmap bmp;
 
@@ -133,7 +130,7 @@ namespace CS363finalproject
             }
             else
             {
-                pictureBox2.BackgroundImage = Properties.Resources.airplane_nbg;
+                pictureBox2.BackgroundImage = Properties.Resources.black;
             }
         }
     }
