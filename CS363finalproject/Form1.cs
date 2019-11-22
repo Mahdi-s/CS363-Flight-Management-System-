@@ -35,7 +35,6 @@ namespace CS363finalproject
             InitializeComponent();
             topographicChecked.Checked = true;
             topographicChecked.Checked = false;
-            airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -154,36 +153,30 @@ namespace CS363finalproject
             t_case1.Tick += new EventHandler(this.case1_Tick);
             t_case1.Start();
 
+            //reset airplane information
             needsUpdatingC1 = true;
             countC1 = 0;
+            infoFlight.Text = "AA263";
+            infoDestination.Text = "AEJ";
             infoStatus.Text = "Arriving";
             infoAltitude.Text = "2000";
-            infoSpeed.Text = "75";
+            infoSpeed.Text = "185";
             infoHeading.Text = "0";
 
+            //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
             airplane1.Visible = true;
-            if (flippedA1C1)
-            {
-                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                flippedA1C1 = false;
-            }
+            airplane1.Image = Properties.Resources.airplaneWhite;
 
             airplane2.Location = new Point(220, 15);
             airplane2.Visible = true;
-            if(flippedA2C1_1 || flippedA2C1_2)
-            {
-                flippedA2C1_1 = false;
-                flippedA2C1_2 = false;
-            }
+            airplane2.Image = Properties.Resources.airplaneGreen;
+            airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
 
             airplane3.Location = new Point(110,210);
             airplane3.Visible = true;
-            if (flippedA3C1)
-            {
-                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                flippedA3C1 = false;
-            }
+            airplane3.Image = Properties.Resources.airplaneGreen;
+
         }
         private void case1_Tick(object sender, EventArgs e)
         {
@@ -202,7 +195,7 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude - 210);
                     int speed = Convert.ToInt32(infoSpeed.Text);
-                    infoSpeed.Text = Convert.ToString(speed - 4);
+                    infoSpeed.Text = Convert.ToString(speed - 18);
                 }
             }
             else if (airplane1.Location.Y > 150)
@@ -214,7 +207,7 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude - 65);
                     int speed = Convert.ToInt32(infoSpeed.Text);
-                    infoSpeed.Text = Convert.ToString(speed - 3);
+                    infoSpeed.Text = Convert.ToString(speed - 6);
                 }
             }
             else if(airplane1.Visible)
@@ -227,7 +220,7 @@ namespace CS363finalproject
                         int altitude = Convert.ToInt32(infoAltitude.Text);
                         infoAltitude.Text = Convert.ToString(altitude - 211);
                         int speed = Convert.ToInt32(infoSpeed.Text);
-                        infoSpeed.Text = Convert.ToString(speed - 7);
+                        infoSpeed.Text = Convert.ToString(speed - 16);
                     }
                 }
                 if (airplane1.Location.X == 225)
@@ -241,7 +234,7 @@ namespace CS363finalproject
                 }
             }
 
-            //airplane 2 exits on top left airspace exit point
+            //airplane 2 exits on top right airspace exit point
             if(airplane2.Location.X == 330)
             {
                 airplane2.Visible = false;
@@ -270,10 +263,29 @@ namespace CS363finalproject
                 airplane2.Left += 1;
             }
 
-            //airplane 3 leads to airspace exit point
-            if(airplane3.Location.X == 330)
+            //airplane 3 exits on top right airspace exit point
+            if (airplane3.Location.X == 330)
             {
                 airplane3.Visible = false;
+                //reset planes to starting directions (a1-up, a2-up, a3-up)
+                if (flippedA1C1)
+                {
+                    airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    flippedA1C1 = false;
+                }
+
+                if (flippedA2C1_1 || flippedA2C1_2)
+                {
+                    flippedA2C1_1 = false;
+                    flippedA2C1_2 = false;
+                }
+
+                if (flippedA3C1)
+                {
+                    airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    flippedA3C1 = false;
+                }
+
                 t_case1.Dispose(); //stop the tick of Case 1
             }
             else if(airplane3.Location.Y == 30 && !flippedA3C1)
@@ -295,8 +307,10 @@ namespace CS363finalproject
         //Case 2 global variables
         Timer t_case2 = new Timer();
         Boolean flippedA1C2 = false;
-        Boolean flippedA2C2 = false;
-        Boolean flippedA3C2 = false;
+        Boolean flippedA2C2_1 = false;
+        Boolean flippedA2C2_2 = false;
+        Boolean flippedA3C2_1 = false;
+        Boolean flippedA3C2_2 = false;
         Boolean needsUpdatingC2 = true;
         int countC2 = 0;
 
@@ -307,33 +321,197 @@ namespace CS363finalproject
             t_case2.Tick += new EventHandler(this.case2_Tick);
             t_case2.Start();
 
+            //reset airplane information
+            needsUpdatingC2 = true;
+            countC2 = 0;
+            infoFlight.Text = "DL305";
+            infoDestination.Text = "MCO";
+            infoStatus.Text = "Departing";
+            infoAltitude.Text = "0";
+            infoSpeed.Text = "20";
+            infoHeading.Text = "270";
+
+            //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
             airplane1.Visible = true;
-            if (flippedA1C1)
-            {
-                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                flippedA1C1 = false;
-            }
+            airplane1.Image = Properties.Resources.airplaneGreen;
 
             airplane2.Location = new Point(220, 15);
             airplane2.Visible = true;
-            if (flippedA2C1_1 || flippedA2C1_2)
-            {
-                flippedA2C1_1 = false;
-                flippedA2C1_2 = false;
-            }
+            airplane2.Image = Properties.Resources.airplaneGreen;
+            airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
 
-            airplane3.Location = new Point(110, 210);
+            airplane3.Location = new Point(200, 150);
             airplane3.Visible = true;
-            if (flippedA3C1)
-            {
-                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                flippedA3C1 = false;
-            }
+            airplane3.Image = Properties.Resources.airplaneWhite;
+            airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+
         }
         private void case2_Tick(object sender, EventArgs e)
         {
+            countC2++;
 
+            //airplane 1 lands on runway
+            if (airplane1.Location.Y == 150 && !flippedA1C2)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA1C2 = true;
+                airplane1.Left -= 1;
+            }
+            else if (airplane1.Location.Y > 150)
+            {
+                airplane1.Top -= 1;
+            }
+            else if (airplane1.Visible)
+            {
+                airplane1.Left -= 1;
+                if (airplane1.Location.X == 225)
+                {
+                    airplane1.Visible = false;
+                }
+            }
+
+            //airplane 2 exits on top right airspace exit point
+            if (airplane2.Location.X == 330)
+            {
+                airplane2.Visible = false;
+            }
+            else if (airplane2.Location.X == 280 && !flippedA2C2_1)
+            {
+                airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA2C2_1 = true;
+                airplane2.Top += 1;
+            }
+            else if (airplane2.Location.Y == 30 && !flippedA2C2_2)
+            {
+                airplane2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA2C2_2 = true;
+            }
+            else if (airplane2.Location.X < 280)
+            {
+                airplane2.Left += 1;
+            }
+            else if (airplane2.Location.Y < 30)
+            {
+                airplane2.Top += 1;
+            }
+            else if (airplane2.Visible)
+            {
+                airplane2.Left += 1;
+            }
+
+            //airplane 3 exits on bottom left airspace exit point
+            if (airplane3.Location.X == 80)
+            {
+                airplane3.Visible = false;
+                needsUpdatingC2 = false;
+
+                //reset planes to starting directions (a1-up, a2-up, a3-up)
+                if (flippedA1C2)
+                {
+                    airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    flippedA1C2 = false;
+                }
+
+                if (flippedA2C2_1 || flippedA2C2_2)
+                {
+                    flippedA2C2_1 = false;
+                    flippedA2C2_2 = false;
+                }
+
+                if (flippedA3C2_1 || flippedA3C2_2)
+                {
+                    airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    flippedA3C2_1 = false;
+                    flippedA3C2_2 = false;
+                }
+
+                t_case2.Dispose(); //stop the tick of Case 2
+            }
+            else if(airplane3.Location.X == 100 && !flippedA3C2_1)
+            {
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA3C2_1 = true;
+
+                infoHeading.Text = "180";
+                if (countC2 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude + 211);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    if (speed <= 234)
+                    {
+                        infoSpeed.Text = Convert.ToString(speed + 16);
+                    }
+                    else
+                    {
+                        infoSpeed.Text = "250";
+                    }
+                }
+            }
+            else if (airplane3.Location.Y == 280 && !flippedA3C2_2)
+            {
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA3C2_2 = true;
+                airplane3.Left += 2;
+
+                infoHeading.Text = "270";
+                if (countC2 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude + 211);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    if (speed <= 234)
+                    {
+                        infoSpeed.Text = Convert.ToString(speed + 16);
+                    }
+                    else
+                    {
+                        infoSpeed.Text = "250";
+                    }
+                }
+            }
+            else if (airplane3.Location.Y < 280 && flippedA3C2_1)
+            {
+                airplane3.Top += 1;
+
+                if (countC2 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude + 211);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    if (speed <= 234)
+                    {
+                        infoSpeed.Text = Convert.ToString(speed + 16);
+                    }
+                    else
+                    {
+                        infoSpeed.Text = "250";
+                    }
+                }
+            }
+            else if (airplane3.Visible)
+            {
+                airplane3.Left -= 1;
+
+                if (needsUpdatingC2)
+                {
+                    if (countC2 % 15 == 0)
+                    {
+                        int altitude = Convert.ToInt32(infoAltitude.Text);
+                        infoAltitude.Text = Convert.ToString(altitude + 211);
+                        int speed = Convert.ToInt32(infoSpeed.Text);
+                        if (speed <= 234)
+                        {
+                            infoSpeed.Text = Convert.ToString(speed + 16);
+                        }
+                        else
+                        {
+                            infoSpeed.Text = "250";
+                        }
+                    }
+                }
+            }
         }
 
         //Case 3 global variables
@@ -351,29 +529,28 @@ namespace CS363finalproject
             t_case3.Tick += new EventHandler(this.case3_Tick);
             t_case3.Start();
 
+            //reset airplane information
+            needsUpdatingC1 = true;
+            countC1 = 0;
+            infoFlight.Text = "AA263";
+            infoDestination.Text = "MSP";
+            infoStatus.Text = "Arriving";
+            infoAltitude.Text = "2000";
+            infoSpeed.Text = "75";
+            infoHeading.Text = "0";
+
+            //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
             airplane1.Visible = true;
-            if (flippedA1C1)
-            {
-                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                flippedA1C1 = false;
-            }
+            airplane1.Image = Properties.Resources.airplaneGreen;
 
             airplane2.Location = new Point(220, 15);
             airplane2.Visible = true;
-            if (flippedA2C1_1 || flippedA2C1_2)
-            {
-                flippedA2C1_1 = false;
-                flippedA2C1_2 = false;
-            }
+            airplane2.Image = Properties.Resources.airplaneGreen;
 
             airplane3.Location = new Point(110, 210);
             airplane3.Visible = true;
-            if (flippedA3C1)
-            {
-                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                flippedA3C1 = false;
-            }
+            airplane3.Image = Properties.Resources.airplaneGreen;
         }
         private void case3_Tick(object sender, EventArgs e)
         {
@@ -395,29 +572,28 @@ namespace CS363finalproject
             t_case4.Tick += new EventHandler(this.case4_Tick);
             t_case4.Start();
 
+            //reset airplane information
+            needsUpdatingC1 = true;
+            countC1 = 0;
+            infoFlight.Text = "AA263";
+            infoDestination.Text = "MSP";
+            infoStatus.Text = "Arriving";
+            infoAltitude.Text = "2000";
+            infoSpeed.Text = "75";
+            infoHeading.Text = "0";
+
+            //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
             airplane1.Visible = true;
-            if (flippedA1C1)
-            {
-                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                flippedA1C1 = false;
-            }
+            airplane1.Image = Properties.Resources.airplaneGreen;
 
             airplane2.Location = new Point(220, 15);
             airplane2.Visible = true;
-            if (flippedA2C1_1 || flippedA2C1_2)
-            {
-                flippedA2C1_1 = false;
-                flippedA2C1_2 = false;
-            }
+            airplane2.Image = Properties.Resources.airplaneGreen;
 
             airplane3.Location = new Point(110, 210);
             airplane3.Visible = true;
-            if (flippedA3C1)
-            {
-                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                flippedA3C1 = false;
-            }
+            airplane3.Image = Properties.Resources.airplaneGreen;
         }
 
         private void case4_Tick(object sender, EventArgs e)

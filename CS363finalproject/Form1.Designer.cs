@@ -352,7 +352,7 @@
             this.infoSpeed.Name = "infoSpeed";
             this.infoSpeed.Size = new System.Drawing.Size(32, 13);
             this.infoSpeed.TabIndex = 29;
-            this.infoSpeed.Text = "75";
+            this.infoSpeed.Text = "185";
             this.infoSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // infoHeading
