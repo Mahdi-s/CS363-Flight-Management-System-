@@ -54,6 +54,7 @@
             this.infoAltitude = new System.Windows.Forms.TextBox();
             this.infoSpeed = new System.Windows.Forms.TextBox();
             this.infoHeading = new System.Windows.Forms.TextBox();
+            this.aircraftCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.airplane1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.airplane2)).BeginInit();
@@ -153,9 +154,9 @@
             this.label3.Location = new System.Drawing.Point(475, 97);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 18);
+            this.label3.Size = new System.Drawing.Size(102, 18);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Aircraft Count: 0";
+            this.label3.Text = "Aircraft Count:";
             // 
             // label4
             // 
@@ -367,11 +368,24 @@
             this.infoHeading.Text = "0";
             this.infoHeading.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // aircraftCount
+            // 
+            this.aircraftCount.AutoSize = true;
+            this.aircraftCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aircraftCount.ForeColor = System.Drawing.Color.White;
+            this.aircraftCount.Location = new System.Drawing.Point(574, 97);
+            this.aircraftCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.aircraftCount.Name = "aircraftCount";
+            this.aircraftCount.Size = new System.Drawing.Size(16, 18);
+            this.aircraftCount.TabIndex = 31;
+            this.aircraftCount.Text = "3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.aircraftCount);
             this.Controls.Add(this.infoHeading);
             this.Controls.Add(this.infoSpeed);
             this.Controls.Add(this.infoAltitude);
@@ -440,6 +454,7 @@
         private System.Windows.Forms.TextBox infoAltitude;
         private System.Windows.Forms.TextBox infoSpeed;
         private System.Windows.Forms.TextBox infoHeading;
+        private System.Windows.Forms.Label aircraftCount;
     }
 }
 

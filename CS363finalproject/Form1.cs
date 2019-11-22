@@ -143,6 +143,9 @@ namespace CS363finalproject
         Boolean flippedA2C1_1 = false;
         Boolean flippedA2C1_2 = false;
         Boolean flippedA3C1 = false;
+        Boolean changedCountA1C1 = false;
+        Boolean changedCountA2C1 = false;
+        Boolean changedCountA3C1 = false;
         Boolean needsUpdatingC1 = true;
         int countC1 = 0;
 
@@ -155,7 +158,11 @@ namespace CS363finalproject
 
             //reset airplane information
             needsUpdatingC1 = true;
+            changedCountA1C1 = false;
+            changedCountA2C1 = false;
+            changedCountA3C1 = false;
             countC1 = 0;
+            aircraftCount.Text = "3";
             infoFlight.Text = "AA263";
             infoDestination.Text = "AEJ";
             infoStatus.Text = "Arriving";
@@ -231,6 +238,12 @@ namespace CS363finalproject
                     infoHeading.Text = "0";
                     needsUpdatingC1 = false;
                     airplane1.Visible = false;
+                    if (!changedCountA1C1)
+                    {
+                        int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                        aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                        changedCountA1C1 = true;
+                    }
                 }
             }
 
@@ -238,6 +251,12 @@ namespace CS363finalproject
             if(airplane2.Location.X == 330)
             {
                 airplane2.Visible = false;
+                if (!changedCountA2C1)
+                {
+                    int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                    aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                    changedCountA2C1 = true;
+                }
             }
             else if(airplane2.Location.X == 280 && !flippedA2C1_1)
             {
@@ -267,6 +286,13 @@ namespace CS363finalproject
             if (airplane3.Location.X == 330)
             {
                 airplane3.Visible = false;
+                if (!changedCountA3C1)
+                {
+                    int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                    aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                    changedCountA3C1 = true;
+                }
+
                 //reset planes to starting directions (a1-up, a2-up, a3-up)
                 if (flippedA1C1)
                 {
@@ -311,6 +337,9 @@ namespace CS363finalproject
         Boolean flippedA2C2_2 = false;
         Boolean flippedA3C2_1 = false;
         Boolean flippedA3C2_2 = false;
+        Boolean changedCountA1C2 = false;
+        Boolean changedCountA2C2 = false;
+        Boolean changedCountA3C2 = false;
         Boolean needsUpdatingC2 = true;
         int countC2 = 0;
 
@@ -323,7 +352,11 @@ namespace CS363finalproject
 
             //reset airplane information
             needsUpdatingC2 = true;
+            changedCountA1C2 = false;
+            changedCountA2C2 = false;
+            changedCountA3C2 = false;
             countC2 = 0;
+            aircraftCount.Text = "3";
             infoFlight.Text = "DL305";
             infoDestination.Text = "MCO";
             infoStatus.Text = "Departing";
@@ -368,6 +401,12 @@ namespace CS363finalproject
                 if (airplane1.Location.X == 225)
                 {
                     airplane1.Visible = false;
+                    if (!changedCountA1C2)
+                    {
+                        int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                        aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                        changedCountA1C2 = true;
+                    }
                 }
             }
 
@@ -375,6 +414,12 @@ namespace CS363finalproject
             if (airplane2.Location.X == 330)
             {
                 airplane2.Visible = false;
+                if (!changedCountA2C2)
+                {
+                    int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                    aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                    changedCountA2C2 = true;
+                }
             }
             else if (airplane2.Location.X == 280 && !flippedA2C2_1)
             {
@@ -405,6 +450,12 @@ namespace CS363finalproject
             {
                 airplane3.Visible = false;
                 needsUpdatingC2 = false;
+                if (!changedCountA3C2)
+                {
+                    int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                    aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                    changedCountA3C2 = true;
+                }
 
                 //reset planes to starting directions (a1-up, a2-up, a3-up)
                 if (flippedA1C2)
@@ -519,6 +570,9 @@ namespace CS363finalproject
         Boolean flippedA1C3 = false;
         Boolean flippedA2C3 = false;
         Boolean flippedA3C3 = false;
+        Boolean changedCountA1C3 = false;
+        Boolean changedCountA2C3 = false;
+        Boolean changedCountA3C3 = false;
         Boolean needsUpdatingC3 = true;
         int countC3 = 0;
 
@@ -531,6 +585,9 @@ namespace CS363finalproject
 
             //reset airplane information
             needsUpdatingC1 = true;
+            changedCountA1C3 = false;
+            changedCountA2C3 = false;
+            changedCountA3C3 = false;
             countC1 = 0;
             infoFlight.Text = "AA263";
             infoDestination.Text = "MSP";
@@ -561,6 +618,9 @@ namespace CS363finalproject
         Boolean flippedA1C4 = false;
         Boolean flippedA2C4 = false;
         Boolean flippedA3C4 = false;
+        Boolean changedCountA1C4 = false;
+        Boolean changedCountA2C4 = false;
+        Boolean changedCountA3C4 = false;
         Boolean needsUpdatingC4 = true;
         int countC4 = 0;
 
@@ -574,6 +634,9 @@ namespace CS363finalproject
 
             //reset airplane information
             needsUpdatingC1 = true;
+            changedCountA1C4 = false;
+            changedCountA2C4 = false;
+            changedCountA3C4 = false;
             countC1 = 0;
             infoFlight.Text = "AA263";
             infoDestination.Text = "MSP";
