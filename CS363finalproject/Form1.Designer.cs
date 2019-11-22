@@ -315,21 +315,21 @@
             this.infoDestination.Location = new System.Drawing.Point(553, 166);
             this.infoDestination.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.infoDestination.Name = "infoDestination";
-            this.infoDestination.Size = new System.Drawing.Size(30, 13);
+            this.infoDestination.Size = new System.Drawing.Size(26, 13);
             this.infoDestination.TabIndex = 23;
-            this.infoDestination.Text = "MSP";
+            this.infoDestination.Text = "AEJ";
             this.infoDestination.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // infoStatus
             // 
             this.infoStatus.AutoSize = true;
             this.infoStatus.ForeColor = System.Drawing.Color.White;
-            this.infoStatus.Location = new System.Drawing.Point(541, 184);
+            this.infoStatus.Location = new System.Drawing.Point(565, 184);
             this.infoStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.infoStatus.Name = "infoStatus";
-            this.infoStatus.Size = new System.Drawing.Size(42, 13);
+            this.infoStatus.Size = new System.Drawing.Size(14, 13);
             this.infoStatus.TabIndex = 24;
-            this.infoStatus.Text = "Arriving";
+            this.infoStatus.Text = "A";
             this.infoStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // infoAltitude

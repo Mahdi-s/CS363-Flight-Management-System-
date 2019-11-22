@@ -165,7 +165,7 @@ namespace CS363finalproject
             aircraftCount.Text = "3";
             infoFlight.Text = "AA263";
             infoDestination.Text = "AEJ";
-            infoStatus.Text = "Arriving";
+            infoStatus.Text = "A";
             infoAltitude.Text = "2000";
             infoSpeed.Text = "185";
             infoHeading.Text = "0";
@@ -232,7 +232,7 @@ namespace CS363finalproject
                 }
                 if (airplane1.Location.X == 225)
                 {
-                    infoStatus.Text = "Landed";
+                    infoStatus.Text = "";
                     infoAltitude.Text = "   0";
                     infoSpeed.Text = "0";
                     infoHeading.Text = "0";
@@ -359,7 +359,7 @@ namespace CS363finalproject
             aircraftCount.Text = "3";
             infoFlight.Text = "DL305";
             infoDestination.Text = "MCO";
-            infoStatus.Text = "Departing";
+            infoStatus.Text = "D";
             infoAltitude.Text = "0";
             infoSpeed.Text = "20";
             infoHeading.Text = "270";
@@ -591,7 +591,7 @@ namespace CS363finalproject
             countC1 = 0;
             infoFlight.Text = "AA263";
             infoDestination.Text = "MSP";
-            infoStatus.Text = "Arriving";
+            infoStatus.Text = "A";
             infoAltitude.Text = "2000";
             infoSpeed.Text = "75";
             infoHeading.Text = "0";
@@ -640,7 +640,7 @@ namespace CS363finalproject
             countC1 = 0;
             infoFlight.Text = "AA263";
             infoDestination.Text = "MSP";
-            infoStatus.Text = "Arriving";
+            infoStatus.Text = "A";
             infoAltitude.Text = "2000";
             infoSpeed.Text = "75";
             infoHeading.Text = "0";
