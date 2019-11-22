@@ -152,7 +152,7 @@ namespace CS363finalproject
         //Case 1: Arriving/Landed airplane
         private void Case1Button_Click(object sender, EventArgs e)
         {
-            t_case1.Interval = 50; //millisecond
+            t_case1.Interval = 100; //millisecond
             t_case1.Tick += new EventHandler(this.case1_Tick);
             t_case1.Start();
 
@@ -346,7 +346,7 @@ namespace CS363finalproject
         //Case 2: Departing airplane
         private void Case2Button_Click(object sender, EventArgs e)
         {
-            t_case2.Interval = 50; //millisecond
+            t_case2.Interval = 100; //millisecond
             t_case2.Tick += new EventHandler(this.case2_Tick);
             t_case2.Start();
 
@@ -579,7 +579,7 @@ namespace CS363finalproject
         //Case 3: Collision avoidance between two airplanes
         private void Case3Button_Click(object sender, EventArgs e)
         {
-            t_case3.Interval = 50; //millisecond
+            t_case3.Interval = 100; //millisecond
             t_case3.Tick += new EventHandler(this.case3_Tick);
             t_case3.Start();
 
@@ -611,10 +611,11 @@ namespace CS363finalproject
         }
         private void case3_Tick(object sender, EventArgs e)
         {
-
+            t_case3.Dispose();
         }
 
         //Case 4 global variables
+        Timer t_case4 = new Timer();
         Boolean flippedA1C4 = false;
         Boolean flippedA2C4 = false;
         Boolean flippedA3C4 = false;
@@ -627,8 +628,7 @@ namespace CS363finalproject
         //Case 4: Collision between two airplanes
         private void Case4Button_Click(object sender, EventArgs e)
         {
-            Timer t_case4 = new Timer();
-            t_case4.Interval = 50; //millisecond
+            t_case4.Interval = 100; //millisecond
             t_case4.Tick += new EventHandler(this.case4_Tick);
             t_case4.Start();
 
@@ -661,7 +661,7 @@ namespace CS363finalproject
 
         private void case4_Tick(object sender, EventArgs e)
         {
-
+            t_case4.Dispose();
         }
 
         //Show or hide topographic map
