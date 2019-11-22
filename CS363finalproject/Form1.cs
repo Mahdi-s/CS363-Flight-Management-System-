@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * Team A+
+ * Andie Jackson
+ * Mahdi Saeedi Velashani
+ */
+
 namespace CS363finalproject
 {
     public partial class Form1 : Form
@@ -132,15 +138,18 @@ namespace CS363finalproject
 
         }
 
+        //Case 1 global variables
+        Timer t_case1 = new Timer();
         Boolean flippedA1C1 = false;
         Boolean flippedA2C1_1 = false;
         Boolean flippedA2C1_2 = false;
         Boolean flippedA3C1 = false;
         Boolean needsUpdatingC1 = true;
         int countC1 = 0;
+
+        //Case 1: Arriving/Landed airplane
         private void Case1Button_Click(object sender, EventArgs e)
         {
-            Timer t_case1 = new Timer();
             t_case1.Interval = 50; //millisecond
             t_case1.Tick += new EventHandler(this.case1_Tick);
             t_case1.Start();
@@ -172,6 +181,7 @@ namespace CS363finalproject
             airplane3.Visible = true;
             if (flippedA3C1)
             {
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
                 flippedA3C1 = false;
             }
         }
@@ -185,11 +195,12 @@ namespace CS363finalproject
                 airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
                 flippedA1C1 = true;
                 airplane1.Left -= 1;
-                int altitude = Convert.ToInt32(infoAltitude.Text);
-                infoAltitude.Text = Convert.ToString(altitude - 12);
                 infoHeading.Text = "270";
+
                 if (countC1 % 15 == 0)
                 {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude - 210);
                     int speed = Convert.ToInt32(infoSpeed.Text);
                     infoSpeed.Text = Convert.ToString(speed - 4);
                 }
@@ -197,12 +208,13 @@ namespace CS363finalproject
             else if (airplane1.Location.Y > 150)
             {
                 airplane1.Top -= 1;
-                int altitude = Convert.ToInt32(infoAltitude.Text);
-                infoAltitude.Text = Convert.ToString(altitude - 6);
+                
                 if (countC1 % 15 == 0)
                 {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude - 65);
                     int speed = Convert.ToInt32(infoSpeed.Text);
-                    infoSpeed.Text = Convert.ToString(speed - 2);
+                    infoSpeed.Text = Convert.ToString(speed - 3);
                 }
             }
             else if(airplane1.Visible)
@@ -210,12 +222,12 @@ namespace CS363finalproject
                 airplane1.Left -= 1;
                 if (needsUpdatingC1)
                 {
-                    int altitude = Convert.ToInt32(infoAltitude.Text);
-                    infoAltitude.Text = Convert.ToString(altitude - 12);
                     if (countC1 % 15 == 0)
                     {
+                        int altitude = Convert.ToInt32(infoAltitude.Text);
+                        infoAltitude.Text = Convert.ToString(altitude - 211);
                         int speed = Convert.ToInt32(infoSpeed.Text);
-                        infoSpeed.Text = Convert.ToString(speed - 4);
+                        infoSpeed.Text = Convert.ToString(speed - 7);
                     }
                 }
                 if (airplane1.Location.X == 225)
@@ -262,12 +274,13 @@ namespace CS363finalproject
             if(airplane3.Location.X == 330)
             {
                 airplane3.Visible = false;
+                t_case1.Dispose(); //stop the tick of Case 1
             }
             else if(airplane3.Location.Y == 30 && !flippedA3C1)
             {
                 airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 flippedA3C1 = true;
-                airplane3.Left += 1;
+                airplane3.Left += 2;
             }
             else if (airplane3.Location.Y > 30)
             {
@@ -278,21 +291,141 @@ namespace CS363finalproject
                 airplane3.Left += 1;
             }
         }
+
+        //Case 2 global variables
+        Timer t_case2 = new Timer();
+        Boolean flippedA1C2 = false;
+        Boolean flippedA2C2 = false;
+        Boolean flippedA3C2 = false;
+        Boolean needsUpdatingC2 = true;
+        int countC2 = 0;
+
+        //Case 2: Departing airplane
         private void Case2Button_Click(object sender, EventArgs e)
         {
+            t_case2.Interval = 50; //millisecond
+            t_case2.Tick += new EventHandler(this.case2_Tick);
+            t_case2.Start();
+
+            airplane1.Location = new Point(330, 275);
+            airplane1.Visible = true;
+            if (flippedA1C1)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA1C1 = false;
+            }
+
+            airplane2.Location = new Point(220, 15);
+            airplane2.Visible = true;
+            if (flippedA2C1_1 || flippedA2C1_2)
+            {
+                flippedA2C1_1 = false;
+                flippedA2C1_2 = false;
+            }
+
+            airplane3.Location = new Point(110, 210);
+            airplane3.Visible = true;
+            if (flippedA3C1)
+            {
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA3C1 = false;
+            }
+        }
+        private void case2_Tick(object sender, EventArgs e)
+        {
 
         }
 
+        //Case 3 global variables
+        Timer t_case3 = new Timer();
+        Boolean flippedA1C3 = false;
+        Boolean flippedA2C3 = false;
+        Boolean flippedA3C3 = false;
+        Boolean needsUpdatingC3 = true;
+        int countC3 = 0;
+
+        //Case 3: Collision avoidance between two airplanes
         private void Case3Button_Click(object sender, EventArgs e)
         {
+            t_case3.Interval = 50; //millisecond
+            t_case3.Tick += new EventHandler(this.case3_Tick);
+            t_case3.Start();
 
+            airplane1.Location = new Point(330, 275);
+            airplane1.Visible = true;
+            if (flippedA1C1)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA1C1 = false;
+            }
+
+            airplane2.Location = new Point(220, 15);
+            airplane2.Visible = true;
+            if (flippedA2C1_1 || flippedA2C1_2)
+            {
+                flippedA2C1_1 = false;
+                flippedA2C1_2 = false;
+            }
+
+            airplane3.Location = new Point(110, 210);
+            airplane3.Visible = true;
+            if (flippedA3C1)
+            {
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA3C1 = false;
+            }
         }
-
-        private void Case4Button_Click(object sender, EventArgs e)
+        private void case3_Tick(object sender, EventArgs e)
         {
 
         }
 
+        //Case 4 global variables
+        Boolean flippedA1C4 = false;
+        Boolean flippedA2C4 = false;
+        Boolean flippedA3C4 = false;
+        Boolean needsUpdatingC4 = true;
+        int countC4 = 0;
+
+        //Case 4: Collision between two airplanes
+        private void Case4Button_Click(object sender, EventArgs e)
+        {
+            Timer t_case4 = new Timer();
+            t_case4.Interval = 50; //millisecond
+            t_case4.Tick += new EventHandler(this.case4_Tick);
+            t_case4.Start();
+
+            airplane1.Location = new Point(330, 275);
+            airplane1.Visible = true;
+            if (flippedA1C1)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA1C1 = false;
+            }
+
+            airplane2.Location = new Point(220, 15);
+            airplane2.Visible = true;
+            if (flippedA2C1_1 || flippedA2C1_2)
+            {
+                flippedA2C1_1 = false;
+                flippedA2C1_2 = false;
+            }
+
+            airplane3.Location = new Point(110, 210);
+            airplane3.Visible = true;
+            if (flippedA3C1)
+            {
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA3C1 = false;
+            }
+        }
+
+        private void case4_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        //Show or hide topographic map
         private void TopographicChecked_CheckedChanged(object sender, EventArgs e)
         {
             if (topographicChecked.Checked)
