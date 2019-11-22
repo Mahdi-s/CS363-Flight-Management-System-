@@ -133,14 +133,24 @@ namespace CS363finalproject
         }
 
         Boolean flippedA1C1 = false;
-        Boolean flippedA2C1 = false;
+        Boolean flippedA2C1_1 = false;
+        Boolean flippedA2C1_2 = false;
         Boolean flippedA3C1 = false;
+        Boolean needsUpdatingC1 = true;
+        int countC1 = 0;
         private void Case1Button_Click(object sender, EventArgs e)
         {
             Timer t_case1 = new Timer();
             t_case1.Interval = 50; //millisecond
             t_case1.Tick += new EventHandler(this.case1_Tick);
             t_case1.Start();
+
+            needsUpdatingC1 = true;
+            countC1 = 0;
+            infoStatus.Text = "Arriving";
+            infoAltitude.Text = "2000";
+            infoSpeed.Text = "75";
+            infoHeading.Text = "0";
 
             airplane1.Location = new Point(330, 275);
             airplane1.Visible = true;
@@ -152,9 +162,10 @@ namespace CS363finalproject
 
             airplane2.Location = new Point(220, 15);
             airplane2.Visible = true;
-            if(flippedA2C1)
+            if(flippedA2C1_1 || flippedA2C1_2)
             {
-                flippedA2C1 = false;
+                flippedA2C1_1 = false;
+                flippedA2C1_2 = false;
             }
 
             airplane3.Location = new Point(110,210);
@@ -166,23 +177,105 @@ namespace CS363finalproject
         }
         private void case1_Tick(object sender, EventArgs e)
         {
+            countC1++;
+
+            //airplane 1 (selected airplane) lands on runway
             if(airplane1.Location.Y == 150 && !flippedA1C1)
             {
                 airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
                 flippedA1C1 = true;
                 airplane1.Left -= 1;
+                int altitude = Convert.ToInt32(infoAltitude.Text);
+                infoAltitude.Text = Convert.ToString(altitude - 12);
+                infoHeading.Text = "270";
+                if (countC1 % 15 == 0)
+                {
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    infoSpeed.Text = Convert.ToString(speed - 4);
+                }
             }
             else if (airplane1.Location.Y > 150)
             {
                 airplane1.Top -= 1;
+                int altitude = Convert.ToInt32(infoAltitude.Text);
+                infoAltitude.Text = Convert.ToString(altitude - 6);
+                if (countC1 % 15 == 0)
+                {
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    infoSpeed.Text = Convert.ToString(speed - 2);
+                }
             }
-            else
+            else if(airplane1.Visible)
             {
                 airplane1.Left -= 1;
+                if (needsUpdatingC1)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude - 12);
+                    if (countC1 % 15 == 0)
+                    {
+                        int speed = Convert.ToInt32(infoSpeed.Text);
+                        infoSpeed.Text = Convert.ToString(speed - 4);
+                    }
+                }
                 if (airplane1.Location.X == 225)
                 {
+                    infoStatus.Text = "Landed";
+                    infoAltitude.Text = "   0";
+                    infoSpeed.Text = "0";
+                    infoHeading.Text = "0";
+                    needsUpdatingC1 = false;
                     airplane1.Visible = false;
                 }
+            }
+
+            //airplane 2 exits on top left airspace exit point
+            if(airplane2.Location.X == 330)
+            {
+                airplane2.Visible = false;
+            }
+            else if(airplane2.Location.X == 280 && !flippedA2C1_1)
+            {
+                airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA2C1_1 = true;
+                airplane2.Top += 1;
+            }
+            else if(airplane2.Location.Y == 30 && !flippedA2C1_2)
+            {
+                airplane2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA2C1_2 = true;
+            }
+            else if(airplane2.Location.X < 280)
+            {
+                airplane2.Left += 1;
+            }
+            else if(airplane2.Location.Y < 30)
+            {
+                airplane2.Top += 1;
+            }
+            else if(airplane2.Visible)
+            {
+                airplane2.Left += 1;
+            }
+
+            //airplane 3 leads to airspace exit point
+            if(airplane3.Location.X == 330)
+            {
+                airplane3.Visible = false;
+            }
+            else if(airplane3.Location.Y == 30 && !flippedA3C1)
+            {
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA3C1 = true;
+                airplane3.Left += 1;
+            }
+            else if (airplane3.Location.Y > 30)
+            {
+                airplane3.Top -= 2;
+            }
+            else if (airplane3.Visible)
+            {
+                airplane3.Left += 1;
             }
         }
         private void Case2Button_Click(object sender, EventArgs e)

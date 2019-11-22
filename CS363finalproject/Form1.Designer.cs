@@ -48,6 +48,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.airplane2 = new System.Windows.Forms.PictureBox();
             this.airplane3 = new System.Windows.Forms.PictureBox();
+            this.infoFlight = new System.Windows.Forms.Label();
+            this.infoDestination = new System.Windows.Forms.Label();
+            this.infoStatus = new System.Windows.Forms.Label();
+            this.infoAltitude = new System.Windows.Forms.TextBox();
+            this.infoSpeed = new System.Windows.Forms.TextBox();
+            this.infoHeading = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.airplane1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.airplane2)).BeginInit();
@@ -158,9 +164,9 @@
             this.label4.Location = new System.Drawing.Point(481, 148);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Flight              AA263";
+            this.label4.Text = "Flight:";
             // 
             // label5
             // 
@@ -169,9 +175,9 @@
             this.label5.Location = new System.Drawing.Point(481, 166);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 13);
+            this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Destination:        MSP";
+            this.label5.Text = "Destination:";
             // 
             // label6
             // 
@@ -180,9 +186,9 @@
             this.label6.Location = new System.Drawing.Point(481, 184);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 13);
+            this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Status:       Departing";
+            this.label6.Text = "Status:";
             // 
             // label7
             // 
@@ -191,9 +197,9 @@
             this.label7.Location = new System.Drawing.Point(481, 207);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 13);
+            this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Altitude(ft):        2000";
+            this.label7.Text = "Altitude(ft):";
             // 
             // label8
             // 
@@ -202,9 +208,9 @@
             this.label8.Location = new System.Drawing.Point(481, 229);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(109, 13);
+            this.label8.Size = new System.Drawing.Size(73, 13);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Speed(knots):     175 ";
+            this.label8.Text = "Speed(knots):";
             // 
             // label9
             // 
@@ -213,9 +219,9 @@
             this.label9.Location = new System.Drawing.Point(481, 250);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 13);
+            this.label9.Size = new System.Drawing.Size(50, 13);
             this.label9.TabIndex = 16;
-            this.label9.Text = "Heading:             120";
+            this.label9.Text = "Heading:";
             // 
             // label10
             // 
@@ -289,11 +295,89 @@
             this.airplane3.TabIndex = 21;
             this.airplane3.TabStop = false;
             // 
+            // infoFlight
+            // 
+            this.infoFlight.AutoSize = true;
+            this.infoFlight.ForeColor = System.Drawing.Color.White;
+            this.infoFlight.Location = new System.Drawing.Point(544, 148);
+            this.infoFlight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.infoFlight.Name = "infoFlight";
+            this.infoFlight.Size = new System.Drawing.Size(39, 13);
+            this.infoFlight.TabIndex = 22;
+            this.infoFlight.Text = "AA263";
+            this.infoFlight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // infoDestination
+            // 
+            this.infoDestination.AutoSize = true;
+            this.infoDestination.ForeColor = System.Drawing.Color.White;
+            this.infoDestination.Location = new System.Drawing.Point(553, 166);
+            this.infoDestination.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.infoDestination.Name = "infoDestination";
+            this.infoDestination.Size = new System.Drawing.Size(30, 13);
+            this.infoDestination.TabIndex = 23;
+            this.infoDestination.Text = "MSP";
+            this.infoDestination.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // infoStatus
+            // 
+            this.infoStatus.AutoSize = true;
+            this.infoStatus.ForeColor = System.Drawing.Color.White;
+            this.infoStatus.Location = new System.Drawing.Point(541, 184);
+            this.infoStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.infoStatus.Name = "infoStatus";
+            this.infoStatus.Size = new System.Drawing.Size(42, 13);
+            this.infoStatus.TabIndex = 24;
+            this.infoStatus.Text = "Arriving";
+            this.infoStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // infoAltitude
+            // 
+            this.infoAltitude.BackColor = System.Drawing.Color.Black;
+            this.infoAltitude.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.infoAltitude.ForeColor = System.Drawing.Color.White;
+            this.infoAltitude.Location = new System.Drawing.Point(548, 204);
+            this.infoAltitude.Name = "infoAltitude";
+            this.infoAltitude.Size = new System.Drawing.Size(32, 13);
+            this.infoAltitude.TabIndex = 28;
+            this.infoAltitude.Text = "2000";
+            this.infoAltitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // infoSpeed
+            // 
+            this.infoSpeed.BackColor = System.Drawing.Color.Black;
+            this.infoSpeed.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.infoSpeed.ForeColor = System.Drawing.Color.White;
+            this.infoSpeed.Location = new System.Drawing.Point(548, 226);
+            this.infoSpeed.Name = "infoSpeed";
+            this.infoSpeed.Size = new System.Drawing.Size(32, 13);
+            this.infoSpeed.TabIndex = 29;
+            this.infoSpeed.Text = "75";
+            this.infoSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // infoHeading
+            // 
+            this.infoHeading.BackColor = System.Drawing.Color.Black;
+            this.infoHeading.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.infoHeading.ForeColor = System.Drawing.Color.White;
+            this.infoHeading.Location = new System.Drawing.Point(548, 247);
+            this.infoHeading.Name = "infoHeading";
+            this.infoHeading.Size = new System.Drawing.Size(32, 13);
+            this.infoHeading.TabIndex = 30;
+            this.infoHeading.Text = "0";
+            this.infoHeading.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.infoHeading);
+            this.Controls.Add(this.infoSpeed);
+            this.Controls.Add(this.infoAltitude);
+            this.Controls.Add(this.infoStatus);
+            this.Controls.Add(this.infoDestination);
+            this.Controls.Add(this.infoFlight);
             this.Controls.Add(this.airplane3);
             this.Controls.Add(this.airplane2);
             this.Controls.Add(this.airplane1);
@@ -350,6 +434,12 @@
         private System.Windows.Forms.PictureBox airplane1;
         private System.Windows.Forms.PictureBox airplane2;
         private System.Windows.Forms.PictureBox airplane3;
+        private System.Windows.Forms.Label infoFlight;
+        private System.Windows.Forms.Label infoDestination;
+        private System.Windows.Forms.Label infoStatus;
+        private System.Windows.Forms.TextBox infoAltitude;
+        private System.Windows.Forms.TextBox infoSpeed;
+        private System.Windows.Forms.TextBox infoHeading;
     }
 }
 
