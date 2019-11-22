@@ -33,6 +33,7 @@ namespace CS363finalproject
         public Form1()
         {
             InitializeComponent();
+            warningLabel.Visible = false;
             topographicChecked.Checked = true;
             topographicChecked.Checked = false;
         }
@@ -568,7 +569,8 @@ namespace CS363finalproject
         //Case 3 global variables
         Timer t_case3 = new Timer();
         Boolean flippedA1C3 = false;
-        Boolean flippedA2C3 = false;
+        Boolean flippedA2C3_1 = false;
+        Boolean flippedA2C3_2 = false;
         Boolean flippedA3C3 = false;
         Boolean changedCountA1C3 = false;
         Boolean changedCountA2C3 = false;
@@ -591,9 +593,9 @@ namespace CS363finalproject
             countC1 = 0;
             infoFlight.Text = "AA263";
             infoDestination.Text = "MSP";
-            infoStatus.Text = "A";
+            infoStatus.Text = "D";
             infoAltitude.Text = "2000";
-            infoSpeed.Text = "75";
+            infoSpeed.Text = "175";
             infoHeading.Text = "0";
 
             //reset positions of airplanes
@@ -601,9 +603,10 @@ namespace CS363finalproject
             airplane1.Visible = true;
             airplane1.Image = Properties.Resources.airplaneGreen;
 
-            airplane2.Location = new Point(220, 15);
+            airplane2.Location = new Point(110, 30);
             airplane2.Visible = true;
-            airplane2.Image = Properties.Resources.airplaneGreen;
+            airplane2.Image = Properties.Resources.airplaneWhite;
+            airplane2.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
 
             airplane3.Location = new Point(110, 210);
             airplane3.Visible = true;
@@ -611,7 +614,113 @@ namespace CS363finalproject
         }
         private void case3_Tick(object sender, EventArgs e)
         {
-            t_case3.Dispose();
+            countC3++;
+
+            //airplane 1 lands on runway
+            if (airplane1.Location.Y == 150 && !flippedA1C3)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA1C3 = true;
+                airplane1.Left -= 1;
+            }
+            else if (airplane1.Location.Y > 150)
+            {
+                airplane1.Top -= 1;
+            }
+            else if (airplane1.Visible)
+            {
+                airplane1.Left -= 1;
+                if (airplane1.Location.X == 225)
+                {
+                    airplane1.Visible = false;
+
+                    if (!changedCountA1C2)
+                    {
+                        int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                        aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                        changedCountA1C3 = true;
+                    }
+                }
+            }
+
+            //airplane 2 almost hits airplane 3 and then exits on bottom left airspace exit point
+            if(airplane2.Location.Y < 80)
+            {
+                airplane2.Top += 1;
+                if(airplane2.Location.Y == 70)
+                {
+                    warningLabel.Visible = true;
+                    warning = true;
+                }
+            }
+            else if(airplane2.Location.Y == 80 && !flippedA2C3_1)
+            {
+                airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA2C3_1 = true;
+            }
+            else if(airplane2.Location.X > 70)
+            {
+                airplane2.Left -= 2;
+                if(airplane2.Location.X == 80)
+                {
+                    warningLabel.Visible = false;
+                    warning = false;
+                }
+            }
+            else if(airplane2.Location.X == 70 && !flippedA2C3_2)
+            {
+                airplane2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA2C3_2 = true;
+            }
+            else if(airplane2.Location.Y < 280)
+            {
+                airplane2.Top += 2;
+            }
+            else if(airplane2.Location.Y == 280)
+            {
+                airplane2.Visible = false;
+            }
+
+            //airplane 3 almost hits airplane 2 and then exits on top right airspace exit point
+            if(airplane3.Location.Y > 30)
+            {
+                airplane3.Top -= 1;
+            }
+            else if(airplane3.Location.Y == 30 && !flippedA3C3)
+            {
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA3C3 = true;
+            }
+            else if(airplane3.Location.X < 320)
+            {
+                airplane3.Left += 2;
+            }
+            else if(airplane3.Location.X == 320)
+            {
+                airplane3.Visible = false;
+
+                //reset planes to starting directions (a1-up, a2-up, a3-up)
+                if (flippedA1C3)
+                {
+                    airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    flippedA1C3 = false;
+                }
+
+                if (flippedA2C3_1 || flippedA2C3_2)
+                {
+                    airplane2.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    flippedA2C3_1 = false;
+                    flippedA2C3_2 = false;
+                }
+
+                if (flippedA3C3)
+                {
+                    airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    flippedA3C3 = false;
+                }
+
+                t_case3.Dispose();
+            }
         }
 
         //Case 4 global variables
@@ -650,9 +759,10 @@ namespace CS363finalproject
             airplane1.Visible = true;
             airplane1.Image = Properties.Resources.airplaneGreen;
 
-            airplane2.Location = new Point(220, 15);
+            airplane2.Location = new Point(110, 30);
             airplane2.Visible = true;
-            airplane2.Image = Properties.Resources.airplaneGreen;
+            airplane2.Image = Properties.Resources.airplaneWhite;
+            airplane2.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
 
             airplane3.Location = new Point(110, 210);
             airplane3.Visible = true;
