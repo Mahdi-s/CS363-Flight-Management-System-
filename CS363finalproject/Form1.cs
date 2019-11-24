@@ -29,11 +29,16 @@ namespace CS363finalproject
         Graphics g;
 
         Boolean warning = false;
+        Boolean emergency = false;
 
         public Form1()
         {
             InitializeComponent();
             warningLabel.Visible = false;
+            emergencyLabel.Visible = false;
+            airplane1.Image = Properties.Resources.airplaneGreen;
+            airplane2.Image = Properties.Resources.airplaneGreen;
+            airplane3.Image = Properties.Resources.airplaneGreen;
             topographicChecked.Checked = true;
             topographicChecked.Checked = false;
         }
@@ -57,7 +62,7 @@ namespace CS363finalproject
         private void t_Tick(object sender, EventArgs e)
         {
             //pen
-            if (warning)
+            if (warning || emergency)
             {
                 p = new Pen(Color.Red, 1f);
             }
@@ -140,9 +145,9 @@ namespace CS363finalproject
 
         //Case 1 global variables
         Timer t_case1 = new Timer();
-        Boolean flippedA1C1 = false;
-        Boolean flippedA2C1_1 = false;
-        Boolean flippedA2C1_2 = false;
+        Boolean flippedA1C1_1 = false;
+        Boolean flippedA1C1_2 = false;
+        Boolean flippedA2C1 = false;
         Boolean flippedA3C1 = false;
         Boolean changedCountA1C1 = false;
         Boolean changedCountA2C1 = false;
@@ -158,6 +163,10 @@ namespace CS363finalproject
             t_case1.Start();
 
             //reset airplane information
+            warning = false;
+            warningLabel.Visible = false;
+            emergency = false;
+            emergencyLabel.Visible = false;
             needsUpdatingC1 = true;
             changedCountA1C1 = false;
             changedCountA2C1 = false;
@@ -166,17 +175,18 @@ namespace CS363finalproject
             aircraftCount.Text = "3";
             infoFlight.Text = "AA263";
             infoDestination.Text = "AEJ";
-            infoStatus.Text = "A";
+            infoStatus.Text = "";
             infoAltitude.Text = "2000";
             infoSpeed.Text = "185";
-            infoHeading.Text = "0";
+            infoHeading.Text = "270";
 
             //reset positions of airplanes
-            airplane1.Location = new Point(330, 275);
+            airplane1.Location = new Point(380, 30);
             airplane1.Visible = true;
             airplane1.Image = Properties.Resources.airplaneWhite;
+            airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
 
-            airplane2.Location = new Point(220, 15);
+            airplane2.Location = new Point(220, 250);
             airplane2.Visible = true;
             airplane2.Image = Properties.Resources.airplaneGreen;
             airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
@@ -191,31 +201,63 @@ namespace CS363finalproject
             countC1++;
 
             //airplane 1 (selected airplane) lands on runway
-            if(airplane1.Location.Y == 150 && !flippedA1C1)
+            if(airplane1.Location.Y == 150 && !flippedA1C1_1)
             {
-                airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                flippedA1C1 = true;
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                flippedA1C1_1 = true;
                 airplane1.Left -= 1;
                 infoHeading.Text = "270";
 
                 if (countC1 % 15 == 0)
                 {
                     int altitude = Convert.ToInt32(infoAltitude.Text);
-                    infoAltitude.Text = Convert.ToString(altitude - 210);
+                    infoAltitude.Text = Convert.ToString(altitude - 216);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    infoSpeed.Text = Convert.ToString(speed - 19);
+                }
+            }
+            else if(airplane1.Location.X == 300 && !flippedA1C1_2)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA1C1_2 = true;
+                airplane1.Left -= 1;
+                infoHeading.Text = "180";
+
+                if (countC1 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude - 246);
                     int speed = Convert.ToInt32(infoSpeed.Text);
                     infoSpeed.Text = Convert.ToString(speed - 18);
                 }
             }
-            else if (airplane1.Location.Y > 150)
+            else if(airplane1.Location.X > 300)
             {
-                airplane1.Top -= 1;
+                airplane1.Left -= 1;
+
+                if (airplane1.Location.X == 330)
+                {
+                    infoStatus.Text = "A";
+                }
+
+                if (countC1 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude - 85);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    infoSpeed.Text = Convert.ToString(speed - 6);
+                }
+            }
+            else if (airplane1.Location.Y < 150)
+            {
+                airplane1.Top += 1;
                 
                 if (countC1 % 15 == 0)
                 {
                     int altitude = Convert.ToInt32(infoAltitude.Text);
-                    infoAltitude.Text = Convert.ToString(altitude - 65);
+                    infoAltitude.Text = Convert.ToString(altitude - 86);
                     int speed = Convert.ToInt32(infoSpeed.Text);
-                    infoSpeed.Text = Convert.ToString(speed - 6);
+                    infoSpeed.Text = Convert.ToString(speed - 7);
                 }
             }
             else if(airplane1.Visible)
@@ -226,13 +268,15 @@ namespace CS363finalproject
                     if (countC1 % 15 == 0)
                     {
                         int altitude = Convert.ToInt32(infoAltitude.Text);
-                        infoAltitude.Text = Convert.ToString(altitude - 211);
+                        infoAltitude.Text = Convert.ToString(altitude - 171);
                         int speed = Convert.ToInt32(infoSpeed.Text);
-                        infoSpeed.Text = Convert.ToString(speed - 16);
+                        infoSpeed.Text = Convert.ToString(speed - 17);
                     }
                 }
                 if (airplane1.Location.X == 225)
                 {
+                    infoFlight.Text = "";
+                    infoDestination.Text = "";
                     infoStatus.Text = "";
                     infoAltitude.Text = "   0";
                     infoSpeed.Text = "0";
@@ -249,7 +293,7 @@ namespace CS363finalproject
             }
 
             //airplane 2 exits on top right airspace exit point
-            if(airplane2.Location.X == 330)
+            if(airplane2.Location.Y == 10)
             {
                 airplane2.Visible = false;
                 if (!changedCountA2C1)
@@ -258,53 +302,18 @@ namespace CS363finalproject
                     aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
                     changedCountA2C1 = true;
                 }
-            }
-            else if(airplane2.Location.X == 280 && !flippedA2C1_1)
-            {
-                airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                flippedA2C1_1 = true;
-                airplane2.Top += 1;
-            }
-            else if(airplane2.Location.Y == 30 && !flippedA2C1_2)
-            {
-                airplane2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                flippedA2C1_2 = true;
-            }
-            else if(airplane2.Location.X < 280)
-            {
-                airplane2.Left += 1;
-            }
-            else if(airplane2.Location.Y < 30)
-            {
-                airplane2.Top += 1;
-            }
-            else if(airplane2.Visible)
-            {
-                airplane2.Left += 1;
-            }
-
-            //airplane 3 exits on top right airspace exit point
-            if (airplane3.Location.X == 330)
-            {
-                airplane3.Visible = false;
-                if (!changedCountA3C1)
-                {
-                    int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
-                    aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
-                    changedCountA3C1 = true;
-                }
 
                 //reset planes to starting directions (a1-up, a2-up, a3-up)
-                if (flippedA1C1)
+                if (flippedA1C1_1 || flippedA1C1_2)
                 {
                     airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                    flippedA1C1 = false;
+                    flippedA1C1_1 = false;
+                    flippedA1C1_2 = false;
                 }
 
-                if (flippedA2C1_1 || flippedA2C1_2)
+                if (flippedA2C1)
                 {
-                    flippedA2C1_1 = false;
-                    flippedA2C1_2 = false;
+                    flippedA2C1 = false;
                 }
 
                 if (flippedA3C1)
@@ -314,6 +323,36 @@ namespace CS363finalproject
                 }
 
                 t_case1.Dispose(); //stop the tick of Case 1
+            }
+            else if(airplane2.Location.X == 350 && !flippedA2C1)
+            {
+                airplane2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA2C1 = true;
+                airplane2.Top += 1;
+            }
+            else if(airplane2.Location.X < 350)
+            {
+                airplane2.Left += 2;
+            }
+            else if(airplane2.Location.Y > 10)
+            {
+                airplane2.Top -= 1;
+            }
+            else if(airplane2.Visible)
+            {
+                airplane2.Left += 1;
+            }
+
+            //airplane 3 exits on top right airspace exit point
+            if (airplane3.Location.X == 400)
+            {
+                airplane3.Visible = false;
+                if (!changedCountA3C1)
+                {
+                    int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                    aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                    changedCountA3C1 = true;
+                }
             }
             else if(airplane3.Location.Y == 30 && !flippedA3C1)
             {
@@ -327,7 +366,7 @@ namespace CS363finalproject
             }
             else if (airplane3.Visible)
             {
-                airplane3.Left += 1;
+                airplane3.Left += 2;
             }
         }
 
@@ -352,6 +391,10 @@ namespace CS363finalproject
             t_case2.Start();
 
             //reset airplane information
+            warning = false;
+            warningLabel.Visible = false;
+            emergency = false;
+            emergencyLabel.Visible = false;
             needsUpdatingC2 = true;
             changedCountA1C2 = false;
             changedCountA2C2 = false;
@@ -412,7 +455,7 @@ namespace CS363finalproject
             }
 
             //airplane 2 exits on top right airspace exit point
-            if (airplane2.Location.X == 330)
+            if (airplane2.Location.X == 380)
             {
                 airplane2.Visible = false;
                 if (!changedCountA2C2)
@@ -447,9 +490,14 @@ namespace CS363finalproject
             }
 
             //airplane 3 exits on bottom left airspace exit point
-            if (airplane3.Location.X == 80)
+            if (airplane3.Location.X == 20)
             {
                 airplane3.Visible = false;
+                infoFlight.Text = "";
+                infoDestination.Text = "";
+                infoAltitude.Text = "0";
+                infoSpeed.Text = "0";
+                infoHeading.Text = "0";
                 needsUpdatingC2 = false;
                 if (!changedCountA3C2)
                 {
@@ -546,6 +594,11 @@ namespace CS363finalproject
             {
                 airplane3.Left -= 1;
 
+                if(airplane3.Location.X == 50)
+                {
+                    infoStatus.Text = "";
+                }
+
                 if (needsUpdatingC2)
                 {
                     if (countC2 % 15 == 0)
@@ -586,17 +639,22 @@ namespace CS363finalproject
             t_case3.Start();
 
             //reset airplane information
+            warning = false;
+            warningLabel.Visible = false;
+            emergency = false;
+            emergencyLabel.Visible = false;
             needsUpdatingC1 = true;
             changedCountA1C3 = false;
             changedCountA2C3 = false;
             changedCountA3C3 = false;
-            countC1 = 0;
-            infoFlight.Text = "AA263";
+            countC3 = 0;
+            aircraftCount.Text = "3";
+            infoFlight.Text = "DL308";
             infoDestination.Text = "MSP";
             infoStatus.Text = "D";
-            infoAltitude.Text = "2000";
+            infoAltitude.Text = "3456";
             infoSpeed.Text = "175";
-            infoHeading.Text = "0";
+            infoHeading.Text = "180";
 
             //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
@@ -634,7 +692,7 @@ namespace CS363finalproject
                 {
                     airplane1.Visible = false;
 
-                    if (!changedCountA1C2)
+                    if (!changedCountA1C3)
                     {
                         int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
                         aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
@@ -647,38 +705,108 @@ namespace CS363finalproject
             if(airplane2.Location.Y < 80)
             {
                 airplane2.Top += 1;
-                if(airplane2.Location.Y == 70)
+                if (countC3 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude + 11);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    if (speed <= 234)
+                    {
+                        infoSpeed.Text = Convert.ToString(speed + 2);
+                    }
+                    else
+                    {
+                        infoSpeed.Text = "250";
+                    }
+                }
+
+                if (airplane2.Location.Y == 70)
                 {
                     warningLabel.Visible = true;
+                    airplane3.Image = Properties.Resources.airplaneRed;
                     warning = true;
                 }
             }
             else if(airplane2.Location.Y == 80 && !flippedA2C3_1)
             {
+                //System.Threading.Thread.Sleep(3000); //wait to simulate input from user
                 airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                infoHeading.Text = "270";
                 flippedA2C3_1 = true;
             }
             else if(airplane2.Location.X > 70)
             {
                 airplane2.Left -= 2;
-                if(airplane2.Location.X == 80)
+
+                if (countC3 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude + 13);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    if (speed <= 234)
+                    {
+                        infoSpeed.Text = Convert.ToString(speed + 6);
+                    }
+                    else
+                    {
+                        infoSpeed.Text = "250";
+                    }
+                }
+
+                if (airplane2.Location.X == 80)
                 {
                     warningLabel.Visible = false;
+                    airplane3.Image = Properties.Resources.airplaneGreen;
                     warning = false;
                 }
             }
             else if(airplane2.Location.X == 70 && !flippedA2C3_2)
             {
                 airplane2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                infoHeading.Text = "180";
                 flippedA2C3_2 = true;
             }
-            else if(airplane2.Location.Y < 280)
+            else if(airplane2.Location.Y < 330)
             {
                 airplane2.Top += 2;
+
+                if(airplane2.Location.Y == 280)
+                {
+                    infoStatus.Text = "";
+                }
+
+                if (countC3 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude + 213);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    if (speed <= 234)
+                    {
+                        infoSpeed.Text = Convert.ToString(speed + 6);
+                    }
+                    else
+                    {
+                        infoSpeed.Text = "250";
+                    }
+                }
             }
-            else if(airplane2.Location.Y == 280)
+            else if(airplane2.Location.Y == 330)
             {
                 airplane2.Visible = false;
+
+                infoFlight.Text = "";
+                infoDestination.Text = "";
+                infoAltitude.Text = "0";
+                infoSpeed.Text = "0";
+                infoHeading.Text = "0";
+                needsUpdatingC3 = false;
+
+                if (!changedCountA2C3)
+                {
+                    int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                    aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                    changedCountA2C3 = true;
+                }
             }
 
             //airplane 3 almost hits airplane 2 and then exits on top right airspace exit point
@@ -691,13 +819,20 @@ namespace CS363finalproject
                 airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 flippedA3C3 = true;
             }
-            else if(airplane3.Location.X < 320)
+            else if(airplane3.Location.X < 380)
             {
                 airplane3.Left += 2;
             }
-            else if(airplane3.Location.X == 320)
+            else if(airplane3.Location.X == 380)
             {
                 airplane3.Visible = false;
+
+                if (!changedCountA3C3)
+                {
+                    int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                    aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                    changedCountA3C3 = true;
+                }
 
                 //reset planes to starting directions (a1-up, a2-up, a3-up)
                 if (flippedA1C3)
@@ -737,41 +872,175 @@ namespace CS363finalproject
         //Case 4: Collision between two airplanes
         private void Case4Button_Click(object sender, EventArgs e)
         {
-            t_case4.Interval = 100; //millisecond
+            t_case4.Interval = 150; //millisecond
             t_case4.Tick += new EventHandler(this.case4_Tick);
             t_case4.Start();
 
             //reset airplane information
+            warning = false;
+            warningLabel.Visible = false;
+            emergency = false;
+            emergencyLabel.Visible = false;
             needsUpdatingC1 = true;
             changedCountA1C4 = false;
             changedCountA2C4 = false;
             changedCountA3C4 = false;
             countC1 = 0;
-            infoFlight.Text = "AA263";
-            infoDestination.Text = "MSP";
-            infoStatus.Text = "A";
-            infoAltitude.Text = "2000";
-            infoSpeed.Text = "75";
-            infoHeading.Text = "0";
+            infoFlight.Text = "AA143";
+            infoDestination.Text = "LAX";
+            infoStatus.Text = "D";
+            infoAltitude.Text = "2142";
+            infoSpeed.Text = "88";
+            infoHeading.Text = "270";
 
             //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
             airplane1.Visible = true;
             airplane1.Image = Properties.Resources.airplaneGreen;
 
-            airplane2.Location = new Point(110, 30);
+            airplane2.Location = new Point(310, 30);
             airplane2.Visible = true;
             airplane2.Image = Properties.Resources.airplaneWhite;
-            airplane2.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            airplane2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            flippedA2C4 = true;
 
-            airplane3.Location = new Point(110, 210);
+            airplane3.Location = new Point(110, 30);
             airplane3.Visible = true;
             airplane3.Image = Properties.Resources.airplaneGreen;
+            airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            flippedA3C4 = true;
         }
 
         private void case4_Tick(object sender, EventArgs e)
         {
-            t_case4.Dispose();
+            countC4++;
+
+            //airplane 1 lands on runway
+            if (airplane1.Location.Y == 150 && !flippedA1C4)
+            {
+                airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA1C4 = true;
+                airplane1.Left -= 1;
+            }
+            else if (airplane1.Location.Y > 150)
+            {
+                airplane1.Top -= 1;
+            }
+            else if (airplane1.Visible)
+            {
+                airplane1.Left -= 1;
+                if (airplane1.Location.X == 225)
+                {
+                    airplane1.Visible = false;
+
+                    if (!changedCountA1C4)
+                    {
+                        int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                        aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                        changedCountA1C4 = true;
+                    }
+
+                    //reset planes to starting directions (a1-up, a2-up, a3-up)
+                    if (flippedA1C4)
+                    {
+                        airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        flippedA1C4 = false;
+                    }
+
+                    if (flippedA2C4)
+                    {
+                        airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        flippedA2C4 = false;
+                    }
+
+                    if (flippedA3C4)
+                    {
+                        airplane3.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                        flippedA3C4 = false;
+                    }
+                    warning = false;
+                    warningLabel.Visible = false;
+                    emergency = false;
+                    emergencyLabel.Visible = false;
+
+                    t_case4.Dispose(); //stop timer 4
+                }
+            }
+            //airplane 2 collides with airplane 3
+            if(airplane2.Location.X == 260)
+            {
+                warning = true;
+                airplane3.Image = Properties.Resources.airplaneRed;
+                airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                warningLabel.Visible = true;
+
+                airplane2.Left -= 1;
+
+                if (countC4 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude + 5);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    if (speed <= 247)
+                    {
+                        infoSpeed.Text = Convert.ToString(speed + 3);
+                    }
+                    else
+                    {
+                        infoSpeed.Text = "250";
+                    }
+                }
+            }
+            else if(airplane2.Location.X == 240)
+            {
+                airplane2.Left -= 1;
+
+                warning = false;
+                warningLabel.Visible = false;
+                emergency = true;
+                emergencyLabel.Visible = true;
+            }
+            else if (airplane2.Location.X > 220)
+            {
+                airplane2.Left -= 1;
+
+                if (countC4 % 15 == 0)
+                {
+                    int altitude = Convert.ToInt32(infoAltitude.Text);
+                    infoAltitude.Text = Convert.ToString(altitude + 5);
+                    int speed = Convert.ToInt32(infoSpeed.Text);
+                    if (speed <= 247)
+                    {
+                        infoSpeed.Text = Convert.ToString(speed + 3);
+                    }
+                    else
+                    {
+                        infoSpeed.Text = "250";
+                    }
+                }
+
+                if (emergency)
+                {
+                    if(countC4 % 2 == 0)
+                    {
+                        emergencyLabel.Visible = true;
+                    }
+                    else
+                    {
+                        emergencyLabel.Visible = false;
+                    }
+                }
+            }
+
+            //airplane 3 collides with airplane 2
+            if (airplane3.Location.X < 200)
+            {
+                airplane3.Left += 1;
+            }
+            else if(airplane3.Location.X == 200)
+            {
+                emergencyLabel.Visible = true;
+            }
         }
 
         //Show or hide topographic map
