@@ -123,7 +123,8 @@ namespace CS363finalproject
             g.DrawLine(p, new Point(120, 132), new Point(180, 132));
             g.DrawLine(p, new Point(120, 140), new Point(180, 140));
             g.DrawLine(p, new Point(120, 142), new Point(180, 142));
-            g.DrawLine(p, new Point(170, 136), new Point(210, 136));
+            g.DrawLine(p, new Point(170, 134), new Point(210, 134));
+            g.DrawLine(p, new Point(170, 138), new Point(210, 138));
 
             //airspace entrance lines
             g.DrawLine(p, new Point(250, 40), new Point(260, 40));
