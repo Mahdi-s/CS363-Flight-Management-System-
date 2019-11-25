@@ -123,6 +123,7 @@ namespace CS363finalproject
             g.DrawLine(p, new Point(120, 132), new Point(180, 132));
             g.DrawLine(p, new Point(120, 140), new Point(180, 140));
             g.DrawLine(p, new Point(120, 142), new Point(180, 142));
+            g.DrawLine(p, new Point(170, 136), new Point(210, 136));
 
             //airspace entrance lines
             g.DrawLine(p, new Point(250, 40), new Point(260, 40));
@@ -158,7 +159,7 @@ namespace CS363finalproject
         //Case 1: Arriving/Landed airplane
         private void Case1Button_Click(object sender, EventArgs e)
         {
-            t_case1.Interval = 100; //millisecond
+            t_case1.Interval = 300; //millisecond
             t_case1.Tick += new EventHandler(this.case1_Tick);
             t_case1.Start();
 
@@ -386,7 +387,7 @@ namespace CS363finalproject
         //Case 2: Departing airplane
         private void Case2Button_Click(object sender, EventArgs e)
         {
-            t_case2.Interval = 100; //millisecond
+            t_case2.Interval = 300; //millisecond
             t_case2.Tick += new EventHandler(this.case2_Tick);
             t_case2.Start();
 
@@ -634,7 +635,7 @@ namespace CS363finalproject
         //Case 3: Collision avoidance between two airplanes
         private void Case3Button_Click(object sender, EventArgs e)
         {
-            t_case3.Interval = 100; //millisecond
+            t_case3.Interval = 300; //millisecond
             t_case3.Tick += new EventHandler(this.case3_Tick);
             t_case3.Start();
 
@@ -729,7 +730,7 @@ namespace CS363finalproject
             }
             else if(airplane2.Location.Y == 80 && !flippedA2C3_1)
             {
-                //System.Threading.Thread.Sleep(3000); //wait to simulate input from user
+                System.Threading.Thread.Sleep(2000); //wait to simulate input from user
                 airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 infoHeading.Text = "270";
                 flippedA2C3_1 = true;
@@ -872,7 +873,7 @@ namespace CS363finalproject
         //Case 4: Collision between two airplanes
         private void Case4Button_Click(object sender, EventArgs e)
         {
-            t_case4.Interval = 150; //millisecond
+            t_case4.Interval = 300; //millisecond
             t_case4.Tick += new EventHandler(this.case4_Tick);
             t_case4.Start();
 
@@ -886,6 +887,7 @@ namespace CS363finalproject
             changedCountA2C4 = false;
             changedCountA3C4 = false;
             countC1 = 0;
+            aircraftCount.Text = "3";
             infoFlight.Text = "AA143";
             infoDestination.Text = "LAX";
             infoStatus.Text = "D";
@@ -932,6 +934,8 @@ namespace CS363finalproject
                 if (airplane1.Location.X == 225)
                 {
                     airplane1.Visible = false;
+                    airplane2.Visible = false;
+                    airplane3.Visible = false;
 
                     if (!changedCountA1C4)
                     {
@@ -1040,6 +1044,9 @@ namespace CS363finalproject
             else if(airplane3.Location.X == 200)
             {
                 emergencyLabel.Visible = true;
+                airplane2.Visible = false;
+                airplane3.Image = Properties.Resources.collision;
+                airplane3.Location = new Point(210, 30);
             }
         }
 

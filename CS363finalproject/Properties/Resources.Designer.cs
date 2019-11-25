@@ -103,6 +103,16 @@ namespace CS363finalproject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap collision {
+            get {
+                object obj = ResourceManager.GetObject("collision", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap topomap {
             get {
                 object obj = ResourceManager.GetObject("topomap", resourceCulture);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.case1Button = new System.Windows.Forms.Button();
             this.case2Button = new System.Windows.Forms.Button();
             this.case3Button = new System.Windows.Forms.Button();
@@ -46,14 +47,14 @@
             this.infoHeading = new System.Windows.Forms.TextBox();
             this.aircraftCount = new System.Windows.Forms.Label();
             this.warningLabel = new System.Windows.Forms.Label();
-            this.airplane3 = new System.Windows.Forms.PictureBox();
-            this.airplane2 = new System.Windows.Forms.PictureBox();
-            this.airplane1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.emergencyLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.airplane3 = new System.Windows.Forms.PictureBox();
+            this.airplane2 = new System.Windows.Forms.PictureBox();
+            this.airplane1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.airplane3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.airplane2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.airplane1)).BeginInit();
@@ -283,54 +284,6 @@
             this.warningLabel.TabIndex = 32;
             this.warningLabel.Text = "WARNING";
             // 
-            // airplane3
-            // 
-            this.airplane3.BackColor = System.Drawing.Color.Transparent;
-            this.airplane3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.airplane3.Image = global::CS363finalproject.Properties.Resources.airplaneGreen;
-            this.airplane3.Location = new System.Drawing.Point(110, 210);
-            this.airplane3.Name = "airplane3";
-            this.airplane3.Size = new System.Drawing.Size(35, 30);
-            this.airplane3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.airplane3.TabIndex = 21;
-            this.airplane3.TabStop = false;
-            // 
-            // airplane2
-            // 
-            this.airplane2.BackColor = System.Drawing.Color.Transparent;
-            this.airplane2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.airplane2.Image = global::CS363finalproject.Properties.Resources.airplaneRed;
-            this.airplane2.Location = new System.Drawing.Point(220, 15);
-            this.airplane2.Name = "airplane2";
-            this.airplane2.Size = new System.Drawing.Size(35, 30);
-            this.airplane2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.airplane2.TabIndex = 20;
-            this.airplane2.TabStop = false;
-            // 
-            // airplane1
-            // 
-            this.airplane1.BackColor = System.Drawing.Color.Transparent;
-            this.airplane1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.airplane1.Image = global::CS363finalproject.Properties.Resources.airplaneWhite;
-            this.airplane1.Location = new System.Drawing.Point(330, 275);
-            this.airplane1.Name = "airplane1";
-            this.airplane1.Size = new System.Drawing.Size(35, 30);
-            this.airplane1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.airplane1.TabIndex = 19;
-            this.airplane1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::CS363finalproject.Properties.Resources.black;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(462, 366);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // emergencyLabel
             // 
             this.emergencyLabel.AutoSize = true;
@@ -381,6 +334,54 @@
             this.label6.TabIndex = 36;
             this.label6.Text = "deg";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // airplane3
+            // 
+            this.airplane3.BackColor = System.Drawing.Color.Transparent;
+            this.airplane3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.airplane3.Image = ((System.Drawing.Image)(resources.GetObject("airplane3.Image")));
+            this.airplane3.Location = new System.Drawing.Point(110, 210);
+            this.airplane3.Name = "airplane3";
+            this.airplane3.Size = new System.Drawing.Size(35, 30);
+            this.airplane3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.airplane3.TabIndex = 21;
+            this.airplane3.TabStop = false;
+            // 
+            // airplane2
+            // 
+            this.airplane2.BackColor = System.Drawing.Color.Transparent;
+            this.airplane2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.airplane2.Image = global::CS363finalproject.Properties.Resources.airplaneRed;
+            this.airplane2.Location = new System.Drawing.Point(220, 15);
+            this.airplane2.Name = "airplane2";
+            this.airplane2.Size = new System.Drawing.Size(35, 30);
+            this.airplane2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.airplane2.TabIndex = 20;
+            this.airplane2.TabStop = false;
+            // 
+            // airplane1
+            // 
+            this.airplane1.BackColor = System.Drawing.Color.Transparent;
+            this.airplane1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.airplane1.Image = global::CS363finalproject.Properties.Resources.airplaneWhite;
+            this.airplane1.Location = new System.Drawing.Point(330, 275);
+            this.airplane1.Name = "airplane1";
+            this.airplane1.Size = new System.Drawing.Size(35, 30);
+            this.airplane1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.airplane1.TabIndex = 19;
+            this.airplane1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::CS363finalproject.Properties.Resources.black;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(462, 366);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
