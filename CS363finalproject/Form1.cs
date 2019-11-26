@@ -727,6 +727,9 @@ namespace CS363finalproject
                     warningLabel.Visible = true;
                     airplane3.Image = Properties.Resources.airplaneRed;
                     warning = true;
+                    System.IO.Stream warningSound = Properties.Resources.warning;
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(warningSound);
+                    player.Play();
                 }
             }
             else if(airplane2.Location.Y == 80 && !flippedA2C3_1)
@@ -978,6 +981,9 @@ namespace CS363finalproject
                 airplane3.Image = Properties.Resources.airplaneRed;
                 airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 warningLabel.Visible = true;
+                System.IO.Stream warningSound2 = Properties.Resources.warning;
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(warningSound2);
+                player.Play();
 
                 airplane2.Left -= 1;
 
@@ -1004,6 +1010,9 @@ namespace CS363finalproject
                 warningLabel.Visible = false;
                 emergency = true;
                 emergencyLabel.Visible = true;
+                System.IO.Stream emergeSound = Properties.Resources.emerg;
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(emergeSound);
+                player.Play();
             }
             else if (airplane2.Location.X > 220)
             {

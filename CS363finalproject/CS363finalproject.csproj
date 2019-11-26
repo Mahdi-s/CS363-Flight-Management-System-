@@ -98,5 +98,11 @@
   <ItemGroup>
     <None Include="Resources\collision.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emerg.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
