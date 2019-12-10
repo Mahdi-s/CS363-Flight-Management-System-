@@ -18,6 +18,7 @@ namespace CS363finalproject
 {
     public partial class Form1 : Form
     {
+        //radar cords
         int WIDTH = 300, HEIGHT = 300, HAND = 150;
         int u; //in degree
         int cx, cy; //center of circle
@@ -39,6 +40,8 @@ namespace CS363finalproject
             airplane1.Image = Properties.Resources.airplaneGreen;
             airplane2.Image = Properties.Resources.airplaneGreen;
             airplane3.Image = Properties.Resources.airplaneGreen;
+            airplane4.Image = Properties.Resources.airplaneGreen;
+            airplane4.Visible = false;
             topographicChecked.Checked = true;
             topographicChecked.Checked = false;
         }
@@ -870,6 +873,45 @@ namespace CS363finalproject
         Boolean flippedA3C4 = false;
         Boolean changedCountA1C4 = false;
         Boolean changedCountA2C4 = false;
+
+
+        //Radar mouse click event to create additional airplanes
+        int x_mouse, y_mouse;
+        private void pictureBox2_MouseClick(object sender, MouseEventArgs e) 
+        {
+            x_mouse = e.X;
+            y_mouse = e.Y;
+            airplane4.Location = new Point(x_mouse, y_mouse);
+            airplane4.Visible = true;
+            airplane4.Image = Properties.Resources.airplaneGreen;
+            airplane4.Top += 1;
+            if (airplane4.Location.Y == 150 && !flippedA1C3)
+            {
+                airplane4.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                flippedA1C3 = true;
+                airplane4.Left -= 1;
+            }
+            else if (airplane4.Location.Y > 150)
+            {
+                airplane4.Top -= 1;
+            }
+            else if (airplane4.Visible)
+            {
+                airplane4.Left -= 1;
+                if (airplane4.Location.X == 225)
+                {
+                    airplane4.Visible = false;
+
+                    if (!changedCountA1C3)
+                    {
+                        int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
+                        aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
+                        changedCountA1C3 = true;
+                    }
+                }
+            }
+        }
+
         Boolean changedCountA3C4 = false;
         Boolean needsUpdatingC4 = true;
         int countC4 = 0;
