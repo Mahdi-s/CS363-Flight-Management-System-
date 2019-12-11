@@ -56,6 +56,10 @@
             this.airplane1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.airplane4 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelair1 = new System.Windows.Forms.Label();
+            this.labelair2 = new System.Windows.Forms.Label();
+            this.labelair3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.airplane3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.airplane2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.airplane1)).BeginInit();
@@ -391,11 +395,60 @@
             this.airplane4.TabIndex = 37;
             this.airplane4.TabStop = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.Location = new System.Drawing.Point(294, 59);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 21);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "AA256";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // labelair1
+            // 
+            this.labelair1.AutoSize = true;
+            this.labelair1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelair1.ForeColor = System.Drawing.Color.Snow;
+            this.labelair1.Location = new System.Drawing.Point(445, 119);
+            this.labelair1.Name = "labelair1";
+            this.labelair1.Size = new System.Drawing.Size(63, 21);
+            this.labelair1.TabIndex = 39;
+            this.labelair1.Text = "AA263";
+            // 
+            // labelair2
+            // 
+            this.labelair2.AutoSize = true;
+            this.labelair2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelair2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelair2.Location = new System.Drawing.Point(445, 153);
+            this.labelair2.Name = "labelair2";
+            this.labelair2.Size = new System.Drawing.Size(63, 21);
+            this.labelair2.TabIndex = 40;
+            this.labelair2.Text = "SP455";
+            // 
+            // labelair3
+            // 
+            this.labelair3.AutoSize = true;
+            this.labelair3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelair3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelair3.Location = new System.Drawing.Point(445, 188);
+            this.labelair3.Name = "labelair3";
+            this.labelair3.Size = new System.Drawing.Size(66, 21);
+            this.labelair3.TabIndex = 41;
+            this.labelair3.Text = "GH543";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelair3);
+            this.Controls.Add(this.labelair2);
+            this.Controls.Add(this.labelair1);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.airplane4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -467,6 +520,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox airplane4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelair1;
+        private System.Windows.Forms.Label labelair2;
+        private System.Windows.Forms.Label labelair3;
     }
 }
 

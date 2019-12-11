@@ -41,7 +41,13 @@ namespace CS363finalproject
             airplane2.Image = Properties.Resources.airplaneGreen;
             airplane3.Image = Properties.Resources.airplaneGreen;
             airplane4.Image = Properties.Resources.airplaneGreen;
+            label7.Location = new Point(300, 300);//label for airplane click on screen
+            label7.Visible = false;
+            labelair1.Location = new Point(300, 300);
+            labelair1.Visible = false;
             airplane4.Visible = false;
+            labelair2.Visible = false;
+            labelair3.Visible = false;
             topographicChecked.Checked = true;
             topographicChecked.Checked = false;
         }
@@ -190,15 +196,21 @@ namespace CS363finalproject
             airplane1.Visible = true;
             airplane1.Image = Properties.Resources.airplaneWhite;
             airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            labelair1.Location = new Point(400, 58);
+            labelair1.Visible = true;
 
             airplane2.Location = new Point(220, 250);
             airplane2.Visible = true;
             airplane2.Image = Properties.Resources.airplaneGreen;
             airplane2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            labelair2.Location = new Point(240, 288);
+            labelair2.Visible = true;
 
             airplane3.Location = new Point(110,210);
             airplane3.Visible = true;
             airplane3.Image = Properties.Resources.airplaneGreen;
+            labelair3.Location = new Point(130, 238);
+            labelair3.Visible = true;
 
         }
         private void case1_Tick(object sender, EventArgs e)
@@ -211,6 +223,7 @@ namespace CS363finalproject
                 airplane1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 flippedA1C1_1 = true;
                 airplane1.Left -= 1;
+                labelair1.Left -= 1;
                 infoHeading.Text = "270";
 
                 if (countC1 % 15 == 0)
@@ -226,6 +239,7 @@ namespace CS363finalproject
                 airplane1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
                 flippedA1C1_2 = true;
                 airplane1.Left -= 1;
+                labelair1.Left -= 1;
                 infoHeading.Text = "180";
 
                 if (countC1 % 15 == 0)
@@ -239,6 +253,7 @@ namespace CS363finalproject
             else if(airplane1.Location.X > 300)
             {
                 airplane1.Left -= 1;
+                labelair1.Left -= 1;
 
                 if (airplane1.Location.X == 330)
                 {
@@ -256,7 +271,8 @@ namespace CS363finalproject
             else if (airplane1.Location.Y < 150)
             {
                 airplane1.Top += 1;
-                
+                labelair1.Top += 1;
+
                 if (countC1 % 15 == 0)
                 {
                     int altitude = Convert.ToInt32(infoAltitude.Text);
@@ -268,6 +284,7 @@ namespace CS363finalproject
             else if(airplane1.Visible)
             {
                 airplane1.Left -= 1;
+                labelair1.Left -= 1;
                 if (needsUpdatingC1)
                 {
                     if (countC1 % 15 == 0)
@@ -288,6 +305,7 @@ namespace CS363finalproject
                     infoHeading.Text = "0";
                     needsUpdatingC1 = false;
                     airplane1.Visible = false;
+                    labelair1.Visible = false;
                     if (!changedCountA1C1)
                     {
                         int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
@@ -301,6 +319,7 @@ namespace CS363finalproject
             if(airplane2.Location.Y == 10)
             {
                 airplane2.Visible = false;
+                labelair2.Visible = false;
                 if (!changedCountA2C1)
                 {
                     int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
@@ -334,24 +353,29 @@ namespace CS363finalproject
                 airplane2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
                 flippedA2C1 = true;
                 airplane2.Top += 1;
+                labelair2.Top += 1;
             }
             else if(airplane2.Location.X < 350)
             {
                 airplane2.Left += 2;
+                labelair2.Left += 2;
             }
             else if(airplane2.Location.Y > 10)
             {
                 airplane2.Top -= 1;
+                labelair2.Top -= 1;
             }
             else if(airplane2.Visible)
             {
                 airplane2.Left += 1;
+                labelair2.Left += 1;
             }
 
             //airplane 3 exits on top right airspace exit point
             if (airplane3.Location.X == 400)
             {
                 airplane3.Visible = false;
+                labelair3.Visible = false;
                 if (!changedCountA3C1)
                 {
                     int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
@@ -364,14 +388,17 @@ namespace CS363finalproject
                 airplane3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 flippedA3C1 = true;
                 airplane3.Left += 2;
+                labelair3.Left += 2;
             }
             else if (airplane3.Location.Y > 30)
             {
                 airplane3.Top -= 2;
+                labelair3.Top -= 2;
             }
             else if (airplane3.Visible)
             {
                 airplane3.Left += 2;
+                labelair3.Left += 2;
             }
         }
 
@@ -385,6 +412,7 @@ namespace CS363finalproject
         Boolean changedCountA1C2 = false;
         Boolean changedCountA2C2 = false;
         Boolean changedCountA3C2 = false;
+        Boolean changedCountA4C2 = false;
         Boolean needsUpdatingC2 = true;
         int countC2 = 0;
 
@@ -871,33 +899,52 @@ namespace CS363finalproject
         Boolean flippedA1C4 = false;
         Boolean flippedA2C4 = false;
         Boolean flippedA3C4 = false;
+        Boolean flippedA4C4 = false;
         Boolean changedCountA1C4 = false;
         Boolean changedCountA2C4 = false;
 
+        Timer t_click = new Timer();
 
         //Radar mouse click event to create additional airplanes
         int x_mouse, y_mouse;
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e) 
         {
+            t_click.Interval = 300; //millisecond
+            t_click.Tick += new EventHandler(this.click_Tick);
+            t_click.Start();
             x_mouse = e.X;
             y_mouse = e.Y;
             airplane4.Location = new Point(x_mouse, y_mouse);
             airplane4.Visible = true;
             airplane4.Image = Properties.Resources.airplaneGreen;
             airplane4.Top += 1;
-            if (airplane4.Location.Y == 150 && !flippedA1C3)
+            label7.Location = new Point(x_mouse+20, y_mouse+38);//label for airplane click on screen
+            label7.Visible = true;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void click_Tick(object sender, EventArgs e)
+        {
+            if (airplane4.Location.Y == 150 && !flippedA1C4)
             {
                 airplane4.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                flippedA1C3 = true;
+                flippedA1C4 = true;
                 airplane4.Left -= 1;
+                label7.Left -= 1;
             }
             else if (airplane4.Location.Y > 150)
             {
                 airplane4.Top -= 1;
+                label7.Top -= 1;
             }
             else if (airplane4.Visible)
             {
                 airplane4.Left -= 1;
+                label7.Left -= 1;
                 if (airplane4.Location.X == 225)
                 {
                     airplane4.Visible = false;
@@ -906,7 +953,7 @@ namespace CS363finalproject
                     {
                         int currentAirplanes = Convert.ToInt32(aircraftCount.Text);
                         aircraftCount.Text = Convert.ToString(currentAirplanes - 1);
-                        changedCountA1C3 = true;
+                        changedCountA1C4 = true;
                     }
                 }
             }
