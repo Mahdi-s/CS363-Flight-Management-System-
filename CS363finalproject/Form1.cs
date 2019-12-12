@@ -191,7 +191,8 @@ namespace CS363finalproject
             infoStatus.Text = "";
             infoAltitude.Text = "2000";
             infoSpeed.Text = "185";
-            infoHeading.Text = "270";
+            infoHeading.Text = "180";
+            labelair1.Text = "AA263 AEJ A \n 020 185 180";
 
             //reset positions of airplanes
             airplane1.Location = new Point(380, 30);
@@ -226,7 +227,8 @@ namespace CS363finalproject
                 flippedA1C1_1 = true;
                 airplane1.Left -= 1;
                 labelair1.Left -= 1;
-                infoHeading.Text = "270";
+                infoHeading.Text = "180";
+                labelair1.Text = "AA263 AEJ A \n 020 185 180";
 
                 if (countC1 % 15 == 0)
                 {
@@ -234,6 +236,7 @@ namespace CS363finalproject
                     infoAltitude.Text = Convert.ToString(altitude - 216);
                     int speed = Convert.ToInt32(infoSpeed.Text);
                     infoSpeed.Text = Convert.ToString(speed - 19);
+                    labelair1.Text = "AA263 AEJ A \n" + " " + (altitude - 216) + " " + (speed - 19) + " " + "180";
                 }
             }
             else if(airplane1.Location.X == 300 && !flippedA1C1_2)
@@ -243,13 +246,14 @@ namespace CS363finalproject
                 airplane1.Left -= 1;
                 labelair1.Left -= 1;
                 infoHeading.Text = "180";
-
+                labelair1.Text = "AA263 AEJ A \n 020 185 180";
                 if (countC1 % 15 == 0)
                 {
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude - 246);
                     int speed = Convert.ToInt32(infoSpeed.Text);
                     infoSpeed.Text = Convert.ToString(speed - 18);
+                    labelair1.Text = "AA263 AEJ A \n" + " " + (altitude - 246) + " " + (speed - 18) + " " + "180";
                 }
             }
             else if(airplane1.Location.X > 300)
@@ -268,6 +272,7 @@ namespace CS363finalproject
                     infoAltitude.Text = Convert.ToString(altitude - 85);
                     int speed = Convert.ToInt32(infoSpeed.Text);
                     infoSpeed.Text = Convert.ToString(speed - 6);
+                    labelair1.Text = "AA263 AEJ A \n" + " " +(altitude - 85) + " " + (speed - 6) + " " + "180";
                 }
             }
             else if (airplane1.Location.Y < 150)
@@ -281,6 +286,7 @@ namespace CS363finalproject
                     infoAltitude.Text = Convert.ToString(altitude - 86);
                     int speed = Convert.ToInt32(infoSpeed.Text);
                     infoSpeed.Text = Convert.ToString(speed - 7);
+                    labelair1.Text = "AA263 AEJ A \n" + " " + (altitude - 86) + " " + (speed - 7) + " " + "180";
                 }
             }
             else if(airplane1.Visible)
@@ -295,6 +301,7 @@ namespace CS363finalproject
                         infoAltitude.Text = Convert.ToString(altitude - 171);
                         int speed = Convert.ToInt32(infoSpeed.Text);
                         infoSpeed.Text = Convert.ToString(speed - 17);
+                        labelair1.Text = "AA263 AEJ A \n" + " " + (altitude - 171) + " " + (speed - 17) + " " + "180";
                     }
                 }
                 if (airplane1.Location.X == 225)
@@ -405,7 +412,7 @@ namespace CS363finalproject
         }
         #endregion
 
-
+        #region Case 2
 
         //Case 2 global variables
         Timer t_case2 = new Timer();
@@ -445,6 +452,7 @@ namespace CS363finalproject
             infoAltitude.Text = "0";
             infoSpeed.Text = "20";
             infoHeading.Text = "270";
+            labelair3.Text = "DL305 MCO D \n 0 20 270";
 
             //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
@@ -593,13 +601,16 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude + 211);
                     int speed = Convert.ToInt32(infoSpeed.Text);
+                    labelair3.Text = "DL305 MCO D \n" + " " + (altitude - 211) + " " + (speed) + " " + "180";
                     if (speed <= 234)
                     {
                         infoSpeed.Text = Convert.ToString(speed + 16);
+                        labelair3.Text = "DL305 MCO D \n" + " " + (altitude) + " " + (speed + 16) + " " + "180";
                     }
                     else
                     {
                         infoSpeed.Text = "250";
+                        labelair3.Text = "DL305 MCO D  \n" + " " + (altitude) + " " + (speed) + " " + "180";
                     }
                 }
             }
@@ -616,6 +627,7 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude + 211);
                     int speed = Convert.ToInt32(infoSpeed.Text);
+                    labelair3.Text = "DL305 MCO D  \n" + " " + (altitude + 211) + " " + (speed) + " " + "270";
                     if (speed <= 234)
                     {
                         infoSpeed.Text = Convert.ToString(speed + 16);
@@ -623,6 +635,7 @@ namespace CS363finalproject
                     else
                     {
                         infoSpeed.Text = "250";
+                        labelair3.Text = "DL305 MCO D  \n" + " " + (altitude) + "250 270";
                     }
                 }
             }
@@ -636,6 +649,7 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude + 211);
                     int speed = Convert.ToInt32(infoSpeed.Text);
+                    labelair3.Text = "DL305 MCO D  \n" + " " + (altitude + 211) + " " + (speed) + " " + "270";
                     if (speed <= 234)
                     {
                         infoSpeed.Text = Convert.ToString(speed + 16);
@@ -643,6 +657,7 @@ namespace CS363finalproject
                     else
                     {
                         infoSpeed.Text = "250";
+                        labelair3.Text = "DL305 MCO D  \n" + " " + (altitude + 211) + "250 270";
                     }
                 }
             }
@@ -663,6 +678,7 @@ namespace CS363finalproject
                         int altitude = Convert.ToInt32(infoAltitude.Text);
                         infoAltitude.Text = Convert.ToString(altitude + 211);
                         int speed = Convert.ToInt32(infoSpeed.Text);
+                        labelair3.Text = "DL305 MCO D  \n" + " " + (altitude + 211) + " " + (speed) + " " + "270";
                         if (speed <= 234)
                         {
                             infoSpeed.Text = Convert.ToString(speed + 16);
@@ -670,12 +686,16 @@ namespace CS363finalproject
                         else
                         {
                             infoSpeed.Text = "250";
+                            labelair3.Text = "DL305 MCO D  \n" + " " + (altitude) + "250 270";
                         }
                     }
                 }
             }
         }
 
+        #endregion
+
+        #region Case 3
         //Case 3 global variables
         Timer t_case3 = new Timer();
         Boolean flippedA1C3 = false;
@@ -712,6 +732,7 @@ namespace CS363finalproject
             infoAltitude.Text = "3456";
             infoSpeed.Text = "175";
             infoHeading.Text = "180";
+            labelair2.Text = "DL308 MSP D \n 3456 175 180";
 
             //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
@@ -778,13 +799,16 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude + 11);
                     int speed = Convert.ToInt32(infoSpeed.Text);
+                    labelair2.Text = "DL308 MSP D \n" + " " + (altitude + 11) + " " + (speed) + " " + "180";
                     if (speed <= 234)
                     {
                         infoSpeed.Text = Convert.ToString(speed + 2);
+                        labelair2.Text = "DL308 MSP D \n" + " " + (altitude) + " " + (speed + 2) + " " + "180";
                     }
                     else
                     {
                         infoSpeed.Text = "250";
+                        labelair2.Text = "DL308 MSP D \n" + " " + (altitude) + "250 180";
                     }
                 }
 
@@ -815,13 +839,16 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude + 13);
                     int speed = Convert.ToInt32(infoSpeed.Text);
+                    labelair2.Text = "DL308 MSP D \n" + " " + (altitude - 216) + " " + (speed - 19) + " " + "180";
                     if (speed <= 234)
                     {
                         infoSpeed.Text = Convert.ToString(speed + 6);
+                        labelair2.Text = "DL308 MSP D \n" + " " + (altitude) + " " + (speed + 6) + " " + "180";
                     }
                     else
                     {
                         infoSpeed.Text = "250";
+                        labelair2.Text = "DL308 MSP D \n" + " " + (altitude) + "250 180";
                     }
                 }
 
@@ -853,13 +880,16 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude + 213);
                     int speed = Convert.ToInt32(infoSpeed.Text);
+                    labelair2.Text = "DL308 MSP D \n" + " " + (altitude + 213) + " " + (speed) + " " + "180";
                     if (speed <= 234)
                     {
                         infoSpeed.Text = Convert.ToString(speed + 6);
+                        labelair2.Text = "DL308 MSP D \n" + " " + (altitude) + " " + (speed + 19) + " " + "180";
                     }
                     else
                     {
                         infoSpeed.Text = "250";
+                        labelair2.Text = "DL308 MSP D \n" + " " + (altitude) + "250 180";
                     }
                 }
             }
@@ -935,17 +965,10 @@ namespace CS363finalproject
             }
         }
 
-        //Case 4 global variables
-        Timer t_case4 = new Timer();
-        Boolean flippedA1C4 = false;
-        Boolean flippedA2C4 = false;
-        Boolean flippedA3C4 = false;
-        Boolean flippedA4C4 = false;
-        Boolean changedCountA1C4 = false;
-        Boolean changedCountA2C4 = false;
+        #endregion
 
+        #region Picture box click and timers 
         Timer t_click = new Timer();
-
         //Radar mouse click event to create additional airplanes
         int x_mouse, y_mouse;
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e) 
@@ -964,6 +987,11 @@ namespace CS363finalproject
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
@@ -1000,7 +1028,23 @@ namespace CS363finalproject
                 }
             }
         }
+        #endregion
 
+        #region Case 4
+        //Case 4 global variables
+        Timer t_case4 = new Timer();
+        Boolean flippedA1C4 = false;
+        Boolean flippedA2C4 = false;
+        Boolean flippedA3C4 = false;
+        Boolean flippedA4C4 = false;
+        Boolean changedCountA1C4 = false;
+
+        private void labelair1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        Boolean changedCountA2C4 = false;
         Boolean changedCountA3C4 = false;
         Boolean needsUpdatingC4 = true;
         int countC4 = 0;
@@ -1023,12 +1067,13 @@ namespace CS363finalproject
             changedCountA3C4 = false;
             countC1 = 0;
             aircraftCount.Text = "3";
-            infoFlight.Text = "AA143";
-            infoDestination.Text = "LAX";
+            infoFlight.Text = "DL305";
+            infoDestination.Text = "MCO";
             infoStatus.Text = "D";
             infoAltitude.Text = "2142";
             infoSpeed.Text = "88";
             infoHeading.Text = "270";
+            labelair2.Text = "DL305 MCO D \n 2142 88 270";
 
             //reset positions of airplanes
             airplane1.Location = new Point(330, 275);
@@ -1136,13 +1181,16 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude + 5);
                     int speed = Convert.ToInt32(infoSpeed.Text);
+                    labelair2.Text = "DL305 MCO D \n" + " " + (altitude + 5) + " " + (speed) + " " + "270";
                     if (speed <= 247)
                     {
                         infoSpeed.Text = Convert.ToString(speed + 3);
+                        labelair2.Text = "DL305 MCO D \n" + " " + (altitude) + " " + (speed+3) + " " + "270";
                     }
                     else
                     {
                         infoSpeed.Text = "250";
+                        labelair2.Text = "DL305 MCO D \n" + " " + (altitude) + "250 270";
                     }
                 }
             }
@@ -1169,13 +1217,16 @@ namespace CS363finalproject
                     int altitude = Convert.ToInt32(infoAltitude.Text);
                     infoAltitude.Text = Convert.ToString(altitude + 5);
                     int speed = Convert.ToInt32(infoSpeed.Text);
+                    labelair2.Text = "DL305 MCO D \n" + " " + (altitude + 5) + " " + (speed) + " " + "270";
                     if (speed <= 247)
                     {
                         infoSpeed.Text = Convert.ToString(speed + 3);
+                        labelair2.Text = "DL305 MCO D \n" + " " + (altitude) + " " + (speed+3) + " " + "270";
                     }
                     else
                     {
                         infoSpeed.Text = "250";
+                        labelair2.Text = "DL305 MCO D \n" + " " + (altitude) + "250 270";
                     }
                 }
 
@@ -1205,9 +1256,13 @@ namespace CS363finalproject
                 labelair2.Visible = false;
                 airplane3.Image = Properties.Resources.collision;
                 airplane3.Location = new Point(210, 30);
+                labelair3.Location = new Point(220, 68);
             }
         }
 
+        #endregion
+
+        #region Topographic map
         //Show or hide topographic map
         private void TopographicChecked_CheckedChanged(object sender, EventArgs e)
         {
@@ -1220,5 +1275,7 @@ namespace CS363finalproject
                 pictureBox2.BackgroundImage = Properties.Resources.black;
             }
         }
+
+        #endregion
     }
 }

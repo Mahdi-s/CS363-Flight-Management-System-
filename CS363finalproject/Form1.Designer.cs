@@ -380,6 +380,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseClick);
             // 
             // airplane4
@@ -402,7 +403,7 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Location = new System.Drawing.Point(294, 59);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 21);
+            this.label7.Size = new System.Drawing.Size(50, 17);
             this.label7.TabIndex = 38;
             this.label7.Text = "AA256";
             this.label7.Click += new System.EventHandler(this.label7_Click);
@@ -411,12 +412,14 @@
             // 
             this.labelair1.AutoSize = true;
             this.labelair1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelair1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.labelair1.ForeColor = System.Drawing.Color.Snow;
             this.labelair1.Location = new System.Drawing.Point(445, 119);
             this.labelair1.Name = "labelair1";
-            this.labelair1.Size = new System.Drawing.Size(63, 21);
+            this.labelair1.Size = new System.Drawing.Size(100, 34);
             this.labelair1.TabIndex = 39;
-            this.labelair1.Text = "AA263";
+            this.labelair1.Text = "AA263 AEJ A  \r\n020 185 0";
+            this.labelair1.Click += new System.EventHandler(this.labelair1_Click);
             // 
             // labelair2
             // 
@@ -425,9 +428,9 @@
             this.labelair2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelair2.Location = new System.Drawing.Point(445, 153);
             this.labelair2.Name = "labelair2";
-            this.labelair2.Size = new System.Drawing.Size(63, 21);
+            this.labelair2.Size = new System.Drawing.Size(97, 34);
             this.labelair2.TabIndex = 40;
-            this.labelair2.Text = "SP455";
+            this.labelair2.Text = "DL308 MSP D\r\n034 181 270";
             // 
             // labelair3
             // 
@@ -436,9 +439,9 @@
             this.labelair3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelair3.Location = new System.Drawing.Point(445, 188);
             this.labelair3.Name = "labelair3";
-            this.labelair3.Size = new System.Drawing.Size(66, 21);
+            this.labelair3.Size = new System.Drawing.Size(120, 43);
             this.labelair3.TabIndex = 41;
-            this.labelair3.Text = "GH543";
+            this.labelair3.Text = "AA550 GFK D\r\n012 30 270";
             // 
             // Form1
             // 
