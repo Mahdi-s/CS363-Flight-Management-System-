@@ -8,11 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/*
- * Team A+
- * Andie Jackson
- * Mahdi Saeedi Velashani
- */
 
 namespace CS363finalproject
 {
